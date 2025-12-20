@@ -1,0 +1,62 @@
+Définition d'un graphe non-orienté
+
+Un graphe est non-orienté si et seulement si sa matrice d'adjacence est symétrique. Cela signifie que pour tout couple de sommets ii et jj, l'élément A[i][j] de la matrice d'adjacence est égal à A[j][i]. Cette condition est nécessaire, mais pas suffisante pour prouver d'autres propriétés du graphe comme l'isomorphisme, où des heuristiques peuvent être plus utiles.
+
+Chemins eulériens et hamiltoniens
+
+Chemin eulérien : Un chemin qui passe par chaque arête du graphe exactement une fois.
+
+Chemin hamiltonien : Un chemin qui passe par chaque sommet du graphe exactement une fois.
+
+Code de Becket-Gray et vectorisation
+
+Considérons un cas où n=7, que nous divisons par 2. Nous allons explorer le chemin de Becket-Gray, qui n'est pas un cycle, et la vectorisation de ce code. Une propriété intéressante à noter est que le nombre de 1 dans le mot courant doit être supérieur ou égal au nombre de sommets restants, sinon on ne termine pas sur la séquence "0000000".
+
+Pour un code de Becket-Gray symétrique, il serait intéressant d'explorer des heuristiques. Par exemple, en introduisant un peu d'aléatoire au début pour éviter les longs retours qui prennent du temps. Une vérification en temps polynomial pourrait déterminer si un code est un code de Becket-Gray, ou utiliser une IA pour générer ces codes.
+Exploration des intervalles
+
+Les intervalles qui ne se chevauchent pas peuvent être intéressants, qu'ils soient longs ou courts. En particulier, nous bloquons la taille des intervalles à d+2 où dd est la dimension. Par exemple, pour d=6, nous obtenons 94 000 configurations sans isomorphisme. Pour d=5, nous obtenons 8 configurations sans isomorphisme.
+
+Codage de Pascal
+
+Il serait utile d'explorer d'autres manières de coder Pascal et de comparer ces méthodes. On pourrait également créer un diagramme de classe pour le code afin de mieux comprendre sa structure.
+
+Analyse Statistique des Codes de Gray
+
+Nous allons effectuer des analyses statistiques sur les 1920 codes de Gray trouvés. Voici les différents aspects que nous allons explorer :
+
+Moyenne de la taille des intervalles pour une valeur kk fixée :
+Examiner la probabilité qu'un nombre soit suivi par un autre en utilisant une matrice de suivi 32×32.
+Calculer la moyenne de la taille des intervalles pour chaque valeur de k.
+Calculer la variance de la taille des intervalles et en faire un histogramme.
+
+Nombre moyen d'intervalles :
+Calculer le nombre moyen d'intervalles dans les codes de Gray.
+Identifier la taille maximale d'un intervalle et examiner s'il est possible d'avoir des intervalles plus grands.
+
+Découpage des colonnes :
+Analyser comment une colonne est découpée (nombre de découpages par colonne).
+Combiner les statistiques sur toutes les colonnes pour obtenir une vue d'ensemble.
+
+Identification des sous-codes de Becket-Gray :
+Rechercher des sous-codes de Becket-Gray parmi les codes de Gray trouvés.
+Noter qu'il n'y en a pas lorsque n=5.
+
+Position du motif "11111" :
+Analyser la position du motif "11111" dans les codes de Gray.
+
+Étude du Caractère Hamiltonien
+
+Dans cette section, nous développerons toutes les notions relatives au caractère Hamiltonien d'un graphe, en détaillant les conditions nécessaires pour qu'un graphe soit Hamiltonien. Cela inclut l'examen des propriétés spécifiques des chemins et cycles hamiltoniens et la comparaison avec les chemins eulériens.
+
+Préparation à la soutenance
+
+Pour la soutenance du 30/05 à 16h :
+
+Commence par expliquer le code de Gray et son lien avec l'hypercube.
+
+Présente les questions ouvertes que vous avez explorées et clarifiées.
+
+Passe ensuite à la partie projet avec des preuves, comme si vous faisiez un cours.
+
+Comparez les résultats obtenus avec les travaux existants, en les mentionnant discrètement.

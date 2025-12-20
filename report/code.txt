@@ -1,0 +1,145 @@
+\begin{definition}
+Un graphe est dit Hamiltonien-connexe, si il existe un chemin Hamiltonien entre chaque paires de sommets.
+\end{definition}
+
+\begin{proposition}
+Un graphe $G$ biparti de bipartition $(X, Y)$ est Hamiltonien si et seulement si la différence des cardinaux de $X$ et $Y$ est majorée par $1$.
+\end{proposition}
+
+\begin{definition}
+Un $k$-code de Gray est un code de Gray telle que la distance entre deux objets consécutifs est à distance au plus $k$.
+\end{definition}
+
+\begin{definition}
+Soit un graphe $G$. La puissance $k$-ème de $G$, notée $G^k$, possède les mêmes sommets que G, et deux sommets sont reliés par une arête, si et %seulement si ces deux sommets sont à distance au plus $k$ dans $G$.
+\end{definition}
+
+Trouver un $k$-code de Gray est équivalent à trouver un code de Gray dans $G^k$.
+
+\begin{table}
+    \centering
+    \begin{tabular}{|c|c|c|} \hline
+    \begin{tikzcd}
+	    000 &&& 001 \\ & 100 & 101 \\ & 110 & 111 \\ 010 &&& 011
+	    \arrow[no head, from=1-1, to=2-2] \arrow[no head, from=2-2, to=3-2]
+	    \arrow[no head, from=3-2, to=3-3] \arrow[no head, from=3-3, to=2-3]
+	    \arrow[no head, from=2-3, to=1-4] \arrow[no head, from=4-4, to=3-3]
+	    \arrow[no head, from=4-4, to=4-1] \arrow[no head, from=4-1, to=1-1]
+	    \arrow[no head, from=1-1, to=1-4] \arrow[no head, from=2-3, to=2-2]
+	    \arrow[no head, from=3-2, to=4-1] \arrow[no head, from=4-4, to=1-4]
+	    \arrow[color={rgb,255:red,214;green,92;blue,92}, curve={height=6pt}, no head, from=1-1, to=2-2]
+	    \arrow[color={rgb,255:red,214;green,92;blue,92}, curve={height=6pt}, no head, from=2-2, to=3-2]
+	    \arrow[color={rgb,255:red,214;green,92;blue,92}, curve={height=6pt}, no head, from=3-2, to=3-3]
+	    \arrow[color={rgb,255:red,214;green,92;blue,92}, curve={height=6pt}, no head, from=3-3, to=2-3]
+	    \arrow[color={rgb,255:red,214;green,92;blue,92}, curve={height=6pt}, no head, from=2-3, to=1-4]
+	    \arrow[color={rgb,255:red,214;green,92;blue,92}, curve={height=-6pt}, no head, from=1-4, to=4-4]
+	    \arrow[color={rgb,255:red,214;green,92;blue,92}, curve={height=-6pt}, no head, from=4-4, to=4-1]
+	    \arrow[color={rgb,255:red,214;green,92;blue,92}, curve={height=-6pt}, no head, from=4-1, to=1-1]
+    \end{tikzcd} & \begin{tabular}{|c|} \hline abc \\ \hline 000\\ 010\\ 011\\ 001\\ 101\\ 111\\ 110\\ 100\\ \hline \end{tabular} 
+    \\ \hline
+
+    \begin{tikzcd}
+	    000 &&& 001 \\ & 100 & 101 \\ & 110 & 111 \\ 010 &&& 011
+	    \arrow[no head, from=1-1, to=2-2] \arrow[no head, from=2-2, to=3-2]
+	    \arrow[no head, from=3-2, to=3-3] \arrow[no head, from=3-3, to=2-3]
+	    \arrow[no head, from=2-3, to=1-4] \arrow[no head, from=4-4, to=3-3]
+	    \arrow[no head, from=4-4, to=4-1] \arrow[no head, from=4-1, to=1-1]
+	    \arrow[no head, from=1-1, to=1-4] \arrow[no head, from=2-3, to=2-2]
+	    \arrow[no head, from=3-2, to=4-1] \arrow[no head, from=4-4, to=1-4]
+	    \arrow[color={rgb,255:red,214;green,92;blue,92}, curve={height=6pt}, no head, from=2-3, to=1-4]
+	    \arrow[color={rgb,255:red,214;green,92;blue,92}, curve={height=6pt}, no head, from=4-4, to=3-3]
+	    \arrow[color={rgb,255:red,214;green,92;blue,92}, curve={height=-6pt}, no head, from=2-2, to=1-1]
+	    \arrow[color={rgb,255:red,214;green,92;blue,92}, curve={height=6pt}, no head, from=3-2, to=4-1]
+	    \arrow[color={rgb,255:red,214;green,92;blue,92}, curve={height=6pt}, no head, from=2-2, to=3-2]
+	    \arrow[color={rgb,255:red,214;green,92;blue,92}, curve={height=-6pt}, no head, from=2-3, to=3-3]
+	    \arrow[color={rgb,255:red,214;green,92;blue,92}, curve={height=-6pt}, no head, from=1-1, to=1-4]
+	    \arrow[color={rgb,255:red,214;green,92;blue,92}, curve={height=6pt}, no head, from=4-1, to=4-4]
+    \end{tikzcd} & \begin{tabular}{|c|} \hline bca\\ \hline 000\\ 010\\ 011\\ 001\\ 101\\ 111\\ 110\\ 100\\ \hline \end{tabular}
+
+    
+    
+    \\ \hline
+       \begin{tikzcd}
+	000 &&& 001 \\ & 100 & 101 \\ & 110 & 111 \\ 010 &&& 011
+	\arrow[no head, from=1-1, to=2-2] \arrow[no head, from=2-2, to=3-2]
+	\arrow[no head, from=3-2, to=3-3] \arrow[no head, from=3-3, to=2-3]
+	\arrow[no head, from=2-3, to=1-4] \arrow[no head, from=4-4, to=3-3]
+	\arrow[no head, from=4-4, to=4-1] \arrow[no head, from=4-1, to=1-1]
+	\arrow[no head, from=1-1, to=1-4] \arrow[no head, from=2-3, to=2-2]
+	\arrow[no head, from=3-2, to=4-1] \arrow[no head, from=4-4, to=1-4]
+	\arrow[color={rgb,255:red,214;green,92;blue,92}, curve={height=-6pt}, no head, from=2-2, to=2-3]
+	\arrow[color={rgb,255:red,214;green,92;blue,92}, curve={height=-6pt}, no head, from=2-3, to=3-3]
+	\arrow[color={rgb,255:red,214;green,92;blue,92}, curve={height=6pt}, no head, from=4-4, to=1-4]
+	\arrow[color={rgb,255:red,214;green,92;blue,92}, curve={height=6pt}, no head, from=1-4, to=1-1]
+	\arrow[color={rgb,255:red,214;green,92;blue,92}, curve={height=6pt}, no head, from=4-1, to=3-2]
+	\arrow[color={rgb,255:red,214;green,92;blue,92}, curve={height=6pt}, no head, from=2-2, to=1-1]
+	\arrow[color={rgb,255:red,214;green,92;blue,92}, curve={height=-6pt}, no head, from=3-3, to=3-2]
+	\arrow[color={rgb,255:red,214;green,92;blue,92}, curve={height=6pt}, no head, from=4-1, to=4-4]
+\end{tikzcd}  &   \begin{tabular}{|c|} \hline acb\\ \hline 000\\ 001\\ 011\\ 010\\ 110\\ 111\\ 101\\ 100\\ \hline \end{tabular} \\ \hline
+
+\end{tabular}
+    \caption{Caption}
+    \label{tab:my_label}
+\end{table}
+\begin{table}
+    \centering
+    \begin{tabular}{|c|c|c|} \hline
+
+        \begin{tikzcd}
+	000 &&& 001 \\ & 100 & 101 \\ & 110 & 111 \\ 010 &&& 011
+	\arrow[no head, from=1-1, to=2-2] \arrow[no head, from=2-2, to=3-2]
+	\arrow[no head, from=3-2, to=3-3] \arrow[no head, from=3-3, to=2-3]
+	\arrow[no head, from=2-3, to=1-4] \arrow[no head, from=4-4, to=3-3]
+	\arrow[no head, from=4-4, to=4-1] \arrow[no head, from=4-1, to=1-1]
+	\arrow[no head, from=1-1, to=1-4] \arrow[no head, from=2-3, to=2-2]
+	\arrow[no head, from=3-2, to=4-1] \arrow[no head, from=4-4, to=1-4]
+	\arrow[color={rgb,255:red,214;green,92;blue,92}, curve={height=-6pt}, no head, from=2-2, to=2-3]
+	\arrow[color={rgb,255:red,214;green,92;blue,92}, curve={height=-6pt}, no head, from=3-3, to=3-2]
+	\arrow[color={rgb,255:red,214;green,92;blue,92}, curve={height=-6pt}, no head, from=2-3, to=1-4]
+	\arrow[color={rgb,255:red,214;green,92;blue,92}, curve={height=6pt}, no head, from=1-1, to=4-1]
+	\arrow[color={rgb,255:red,214;green,92;blue,92}, curve={height=-6pt}, no head, from=4-4, to=3-3]
+	\arrow[color={rgb,255:red,214;green,92;blue,92}, curve={height=-6pt}, no head, from=1-4, to=4-4]
+	\arrow[color={rgb,255:red,214;green,92;blue,92}, curve={height=6pt}, no head, from=2-2, to=1-1]
+	\arrow[color={rgb,255:red,214;green,92;blue,92}, curve={height=-6pt}, no head, from=3-2, to=4-1]
+\end{tikzcd} &\begin{tabular}{|c|} \hline bac\\ \hline 000\\ 100\\ 101\\ 001\\ 011\\ 111\\ 110\\ 010\\ \hline \end{tabular}   \\ \hline
+         
+\begin{tikzcd}
+	000 &&& 001 \\ & 100 & 101 \\ & 110 & 111 \\ 010 &&& 011
+	\arrow[no head, from=1-1, to=2-2] \arrow[no head, from=2-2, to=3-2]
+	\arrow[no head, from=3-2, to=3-3] \arrow[no head, from=3-3, to=2-3]
+	\arrow[no head, from=2-3, to=1-4] \arrow[no head, from=4-4, to=3-3]
+	\arrow[no head, from=4-4, to=4-1] \arrow[no head, from=4-1, to=1-1]
+	\arrow[no head, from=1-1, to=1-4] \arrow[no head, from=2-3, to=2-2]
+	\arrow[no head, from=3-2, to=4-1] \arrow[no head, from=4-4, to=1-4]
+	\arrow[color={rgb,255:red,214;green,92;blue,92}, curve={height=-6pt}, no head, from=3-2, to=2-2]
+	\arrow[color={rgb,255:red,214;green,92;blue,92}, curve={height=-6pt}, no head, from=2-2, to=2-3]
+	\arrow[color={rgb,255:red,214;green,92;blue,92}, curve={height=-6pt}, no head, from=2-3, to=3-3]
+	\arrow[color={rgb,255:red,214;green,92;blue,92}, curve={height=-6pt}, no head, from=3-3, to=4-4]
+	\arrow[color={rgb,255:red,214;green,92;blue,92}, curve={height=6pt}, no head, from=4-4, to=1-4]
+	\arrow[color={rgb,255:red,214;green,92;blue,92}, curve={height=6pt}, no head, from=1-4, to=1-1]
+	\arrow[color={rgb,255:red,214;green,92;blue,92}, curve={height=6pt}, no head, from=1-1, to=4-1]
+	\arrow[color={rgb,255:red,214;green,92;blue,92}, curve={height=-6pt}, no head, from=4-1, to=3-2]
+\end{tikzcd}&  
+\begin{tabular}{|c|} \hline cba\\ \hline 000\\ 010\\ 110\\ 100\\ 101\\ 111\\ 011\\ 001\\ \hline \end{tabular} \\ \hline
+       
+\begin{tikzcd}
+	000 &&& 001 \\ & 100 & 101 \\ & 110 & 111 \\ 010 &&& 011
+	\arrow[no head, from=1-1, to=2-2] \arrow[no head, from=2-2, to=3-2]
+	\arrow[no head, from=3-2, to=3-3] \arrow[no head, from=3-3, to=2-3]
+	\arrow[no head, from=2-3, to=1-4] \arrow[no head, from=4-4, to=3-3]
+	\arrow[no head, from=4-4, to=4-1] \arrow[no head, from=4-1, to=1-1]
+	\arrow[no head, from=1-1, to=1-4] \arrow[no head, from=2-3, to=2-2]
+	\arrow[no head, from=3-2, to=4-1] \arrow[no head, from=4-4, to=1-4]
+	\arrow[color={rgb,255:red,214;green,92;blue,92}, curve={height=-6pt}, no head, from=2-2, to=2-3]
+	\arrow[color={rgb,255:red,214;green,92;blue,92}, curve={height=6pt}, no head, from=1-4, to=1-1]
+	\arrow[color={rgb,255:red,214;green,92;blue,92}, curve={height=-6pt}, no head, from=3-3, to=3-2]
+	\arrow[color={rgb,255:red,214;green,92;blue,92}, curve={height=6pt}, no head, from=4-1, to=4-4]
+	\arrow[color={rgb,255:red,214;green,92;blue,92}, curve={height=6pt}, no head, from=2-2, to=3-2]
+	\arrow[color={rgb,255:red,214;green,92;blue,92}, curve={height=-6pt}, no head, from=2-3, to=1-4]
+	\arrow[color={rgb,255:red,214;green,92;blue,92}, curve={height=6pt}, no head, from=1-1, to=4-1]
+	\arrow[color={rgb,255:red,214;green,92;blue,92}, curve={height=-6pt}, no head, from=4-4, to=3-3]
+\end{tikzcd}  &  \begin{tabular}{|c|} \hline cab\\ \hline 000\\ 100\\ 110\\ 010\\ 011\\ 111\\ 101\\ 001\\ \hline \end{tabular}\\ \hline
+    \end{tabular}
+    \caption{Caption}
+    \label{tab:my_label}
+\end{table}
