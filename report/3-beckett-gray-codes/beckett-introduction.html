@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+    <!-- metadata -->
+
+    <meta charset="UTF-8">
+    <meta name="robots" content="index, follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Les codes de Beckett-Gray : Introduction</title>
+
+    <meta name="description" content="">
+
+    <meta name="keywords" content="">
+
+    <meta name="author" content="Lucas Petit">
+
+    <link rel="icon" href="/assets/img/logo/logo.ico" type="image/x-icon">
+
+    <!-- for rendering latex -->
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+
+    <!-- JS -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+    <!-- ALL STYLESHEET -->
+
+    <link rel="stylesheet" href="../../src/main.css">
+</head>
+
+<body>
+    <header id="main-header-hihi">
+        <nav>
+            <ul>
+                <li>
+                    <a href="../../">
+                        <svg style="padding-right: 0.5rem" class="flip-horizontal icon backwardArrow"
+                            viewBox="0 0 24 24">
+                            <path d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"></path>
+                        </svg>
+                        Réduction de réseaux
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div id="toc-wrapper"></div>
+
+        <div id="article">
+            <h3>Introduction</h3>
+
+            <div class="paragraph">
+                Un type de codage qui va nous intéresser dans ce mémoire est le codage de Beckett-Gray, nommé à partir
+                de Samuel Beckett, un écrivain Irlandais. Dans l'une de ses pièces de théâtre, nommée "Quad", il y
+                avait $4$ acteurs, et la pièce était divisée en plusieurs périodes de temps. À la fin de chaque période,
+                Beckett souhaitait que l'un des quatre acteurs entre ou sorte de la scène, il voulait que la pièce
+                commence et se termine avec une scène vide et il voulait que chaque sous-ensemble d'acteurs apparaisse
+                sur scène exactement une fois. Ce problème est équivalent à trouver un code Gray cyclique sur des
+                chaînes binaires de longueur $4$. Cependant, Beckett voulait une restriction supplémentaire sur le
+                scénario : l'acteur qui quitte la scène doit être celui qui est actuellement sur scène depuis le plus
+                longtemps. Si nous appliquons cette restriction finale aux codes Gray cycliques sur des chaînes
+                binaires, nous obtenons ce qui est appelé un code de Beckett-Gray cyclique. Malheureusement, Beckett n'a
+                pas pu trouver de solution (donc un code Beckett-Gray à $4$ bits), et en effet, aucun code de
+                Beckett-Gray n'existe pour $n=4$, en conséquence il a plutôt répété certains sous-ensembles d'acteurs et
+                utilisé $24$ périodes de temps.
+            </div>
+
+            <div class="paragraph">
+                Voici un exemple de code Beckett-Gray à $5$ bits où le bit qui a été à $1$ pendant le plus longtemps est
+                souligné :
+            </div>
+
+            <div class="paragraph">
+                $00000$, $0000\underline{1}$, $0001\underline{1}$, $000\underline{1}0$, $001\underline{1}0$,
+                $001\underline{1}1$,
+                $00\underline{1}01$, $01\underline{1}01$, $0100\underline{1}$, $0\underline{1}000$, $0\underline{1}010$,
+                $0\underline{1}011$, $1\underline{1}011$, $100\underline{1}1$, $101\underline{1}1$, $1010\underline{1}$,
+                $\underline{1}0100$, $00\underline{1}00$, $01\underline{1}00$, $11\underline{1}00$, $1\underline{1}000$,
+                $1\underline{1}010$, $\underline{1}0010$, $\underline{1}0110$, $\underline{1}1110$, $011\underline{1}0$,
+                $011\underline{1}1$, $111\underline{1}1$, $1\underline{1}101$, $1\underline{1}001$, $1000\underline{1}$,
+                $\underline{1}0000$.
+            </div>
+
+            <div class="paragraph">
+                Il n'existe pas de méthode constructive connue pour construire des codes de Beckett-Gray et la recherche
+                de codes de Beckett-Gray est répertoriée comme un problème difficile. On sait que des codes Beckett-Gray
+                existent pour $n = 2, 5, 6, 7, 8$ et qu'ils n'existent pas pour $n = 3, 4$. Aucun code Beckett-Gray
+                n'est connu pour $n \geq 9$.
+            </div>
+
+            <div class="proposition">
+                Soit $c$ un code de Beckett-Gray. Soit $\sigma \in \mathcal{G}_n$. Alors $\sigma(c)$ est un code de
+                Beckett-Gray.
+            </div>
+
+            <div class="proof">
+                L'idée de la preuve, c'est que les bits à $1$ dans les codes de Beckett-Gray sont gérés par une liste
+                FIFO. En permutant les coordonnées binaires de chaque élément du code de Beckett-Gray, on préserve cette
+                liste.
+            </div>
+        </div>
+
+    </main>
+
+    <footer id="main-footer"></footer>
+
+    <script type="module" src="../../src/main.js"></script>
+</body>
+
+</html>

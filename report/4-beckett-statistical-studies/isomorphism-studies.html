@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+    <!-- metadata -->
+
+    <meta charset="UTF-8">
+    <meta name="robots" content="index, follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Etudes des isomorphismes</title>
+
+    <meta name="description" content="">
+
+    <meta name="keywords" content="">
+
+    <meta name="author" content="Lucas Petit">
+
+    <link rel="icon" href="/assets/img/logo/logo.ico" type="image/x-icon">
+
+    <!-- for rendering latex -->
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+
+    <!-- JS -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+    <!-- ALL STYLESHEET -->
+
+    <link rel="stylesheet" href="../../src/main.css">
+</head>
+
+<body>
+    <header id="main-header-hihi">
+        <nav>
+            <ul>
+                <li>
+                    <a href="../../">
+                        <svg style="padding-right: 0.5rem" class="flip-horizontal icon backwardArrow"
+                            viewBox="0 0 24 24">
+                            <path d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"></path>
+                        </svg>
+                        Réduction de réseaux
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div id="toc-wrapper"></div>
+
+        <div id="article">
+            <h3>Études des isomorphismes</h3>
+
+            <div class="paragraph">
+                Une chose à remarquer en regardant les indices des $8$ codes non isomorphes générés, ceux-ci se trouvent
+                tous parmi les premiers codes générés. Cela pourrait indiquer une généralisation possible : l'algorithme
+                pourrait être interrompu assez tôt, les derniers codes pouvant être obtenus par isomorphisme.
+            </div>
+
+            <div class="paragraph">
+                Il est pertinent d'étudier l'indice d'un code généré par rapport à l'indice de ses codes isomorphes,
+                et de représenter ces indices sur un graphique, comme illustré ci-dessous. Un point (x,y) est dans ce
+                graphique si le code $c_1$ d'indice $x$ est isomorphe au code $c_2$ d'indice $y$.
+            </div>
+
+
+            <div class="paragraph">
+                Il est à noter que ce tableau s'est fait avec les $960$ codes à qui on a enlevé leur réversion, le
+                graphique peut être altéré.
+            </div>
+
+            <figure>
+                <div class="fig-container">
+                    <img src="images/wouah.png" alt="" srcset="">
+                </div>
+
+                <figcaption>Temps d'exécution pour générer un code de Beckett-Gray partiel</figcaption>
+            </figure>
+
+            <div class="paragraph">
+                On remarque encore une fois tout de suite la caractère remarquable de cette figure, dans les $96$
+                premiers codes générés, $8$ codes non isomorphes sont présent, nous n'avons aucune idée de pourquoi
+                cette valeur de $96 = 1920/20$, mais on pourrait penser que les 94841 codes de Beckett-Gray non
+                isomorphes pour $n=6$ soient générés assez rapidement, en testant sur les 1000000 premiers codes
+                on trouve environs 20000 codes non isomorphes. On pourrait alors créer une heuristique qui coupe
+                très rapidement l'algorithme, évitant de générer tous les codes, pouvant être obtenus par isomorphisme,
+                puis par réversion, bien entendu, tout cela ne reste que des conjectures.
+            </div>
+
+            <ul>
+                <li>
+                    <div class="underline">Motifs en Damier :</div>
+
+                    <div class="paragraph">
+                        Le graphique présente un motif en damier distinct, avec des carrés de points bleus alternant
+                        avec des zones vides.
+                        Cela indique que les isomorphismes se produisent régulièrement entre certains groupes de codes.
+                        Si on considère le nombre de zones bleus, on trouve 10 carrés bleu en ordonné et 15 en abscisse.
+                    </div>
+                </li>
+                <li>
+                    <div class="underline">Distribution des Points :</div>
+
+                    <div class="paragraph">
+                        Les points sont densément regroupés en blocs. Chaque bloc représente un ensemble de codes de
+                        Beckett-Gray qui sont mutuellement isomorphes. Ces blocs sont séparés par des espaces vides,
+                        suggérant que les isomorphismes sont contenus au sein de groupes spécifiques de codes et ne se
+                        produisent pas entre ces groupes.
+                    </div>
+                </li>
+                <li>
+                    <div class="underline">Taille des Blocs :</div>
+
+                    <div class="paragraph">
+                        Les blocs ont une taille variable, mais ils apparaissent généralement sous forme de carrés ou de
+                        rectangles réguliers. Cela indique une structure sous-jacente dans la manière dont les codes de
+                        Beckett-Gray sont isomorphes les uns aux autres.
+                    </div>
+                </li>
+                <li>
+                    <div class="underline">Interprétation des Blocs :</div>
+
+                    <div class="paragraph">
+                        Les blocs représentant les isomorphismes montrent que pour un certain indice de code de
+                        Beckett-Gray, il existe un ensemble défini d'autres indices avec lesquels il est isomorphe. Ces
+                        ensembles semblent être bien délimités et non aléatoires.
+                    </div>
+                </li>
+                <li>
+                    <div class="underline">Concentration de points</div>
+
+                    <div class="paragraph">
+                        Vers la fin du graphique, il semble y avoir une densité accrue de rectangles.
+                    </div>
+                </li>
+            </ul>
+
+            <div class="paragraph">
+                En conclusion le graphique démontre que les isomorphismes entre les codes de Beckett-Gray ne sont pas
+                distribués de manière aléatoire mais suivent une structure régulière et répétitive. Les motifs en damier
+                et les blocs de points bleus révèlent que les isomorphismes se produisent fréquemment au sein de groupes
+                spécifiques de codes.
+            </div>
+        </div>
+
+    </main>
+
+    <footer id="main-footer"></footer>
+
+    <script type="module" src="../../src/main.js"></script>
+</body>
+
+</html>

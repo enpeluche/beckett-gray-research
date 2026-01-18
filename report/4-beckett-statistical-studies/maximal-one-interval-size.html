@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+    <!-- metadata -->
+
+    <meta charset="UTF-8">
+    <meta name="robots" content="index, follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Taille des intervalles de longueur maximale de bit a 1</title>
+
+    <meta name="description" content="">
+
+    <meta name="keywords" content="">
+
+    <meta name="author" content="Lucas Petit">
+
+    <link rel="icon" href="/assets/img/logo/logo.ico" type="image/x-icon">
+
+    <!-- for rendering latex -->
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+
+    <!-- JS -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+    <!-- ALL STYLESHEET -->
+
+    <link rel="stylesheet" href="../../src/main.css">
+</head>
+
+<body>
+    <header id="main-header-hihi">
+        <nav>
+            <ul>
+                <li>
+                    <a href="../../">
+                        <svg style="padding-right: 0.5rem" class="flip-horizontal icon backwardArrow"
+                            viewBox="0 0 24 24">
+                            <path d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"></path>
+                        </svg>
+                        Réduction de réseaux
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div id="toc-wrapper"></div>
+
+        <div id="article">
+            <h3>Taille des intervalles de longueur maximale de bit à $1$</h3>
+
+            <div class="paragraph">
+                Nous étudions la taille des intervalles de longueur maximale afin de déterminer s'il est possible d'en
+                déduire une propriété. Par exemple, si nous constatons qu'il n'y a jamais plus de $k$ bits consécutifs
+                à $1$ dans un même code, cela nous permettrait de couper les branches plus rapidement. En étudiant les
+                données disponibles, on constate que l'on a une borne inférieure et supérieure pour le plus grand nombre
+                de bit consécutif à $1$ dans les cas respectifs où $n=5$, $n=6$ et $n=7$. On le connaît à
+                $\llbracket 5, 7 \rrbracket$ pour $n = 5$. On l'estime à $\llbracket 6, 10 \rrbracket$ pour $n = 6$. On
+                l'estime grossièrement à $\llbracket 9, 11 \rrbracket$ pour $n = 7$.
+            </div>
+
+            <div class="paragraph">
+                On peut alors formuler des conjectures sur l'existence de longueur de borne inférieur et supérieur
+                d'intervalles de longueur maximale contenant des bits à $1$ consécutifs de taille minimale et maximale.
+            </div>
+
+            <div class="paragraph">
+                Il existerait toujours au moins un intervalle de longueur $5$ dans le cas $n=5$, de longueur $6$ dans le
+                cas $n=6$ et $9$ dans le cas $n=7$, on aurait jamais plus de $7$ bit à $1$ consécutifs pour $n=5$,
+                jamais plus de $10$ pour $n=6$ et jamais plus de $11$ pour $n=7$. En acceptant cette conjecture cela
+                nous permettrait de développer une heuristique qui coupe l'intervalle si il y a seulement $k$ sommets
+                restant et qu'il est impossible d'avoir $k$ fois de suite le même bit à $1$, ou qui passe à $0$ si on
+                observe plus de $K$ bits consécutifs à $1$. Nous ne le l'implémenterons pas par manque de temps. On peut
+                cependant penser que dans le cas de l'existence d'une borne inférieure, on pourrait couper des branches
+                sur la fin de l'arbre et donc couper peu de solutions, ce qui rendrait l'heuristique négligeable par
+                rapport à son coût d'implémentation, quand à prendre les intervalles maximales, elle réduit légèrement
+                le temps d'exécution.
+            </div>
+        </div>
+
+    </main>
+
+    <footer id="main-footer"></footer>
+
+    <script type="module" src="../../src/main.js"></script>
+</body>
+
+</html>

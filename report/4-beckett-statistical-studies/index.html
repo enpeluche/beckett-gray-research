@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+    <!-- metadata -->
+
+    <meta charset="UTF-8">
+    <meta name="robots" content="index, follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Etudes statistiques sur les codes de Beckett-Gray</title>
+
+    <meta name="description" content="">
+
+    <meta name="keywords" content="">
+
+    <meta name="author" content="Lucas Petit">
+
+    <link rel="icon" href="/assets/img/logo/logo.ico" type="image/x-icon">
+
+    <!-- for rendering latex -->
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+
+    <!-- JS -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+    <!-- ALL STYLESHEET -->
+
+    <link rel="stylesheet" href="../../src/main.css">
+</head>
+
+<body>
+    <header id="main-header-hihi">
+        <nav>
+            <ul>
+                <li>
+                    <a href="../../">
+                        <svg style="padding-right: 0.5rem" class="flip-horizontal icon backwardArrow"
+                            viewBox="0 0 24 24">
+                            <path d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"></path>
+                        </svg>
+                        Réduction de réseaux
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div id="toc-wrapper"></div>
+
+        <div id="article">
+            <h2>Études statistiques sur les codes de Beckett-Gray.</h2>
+
+            <div class="paragraph">
+                On va étudier les solutions afin de voir si on peut en déduire des propriétés plus globales qui nous
+                permettraient d'améliorer les temps de calcul. Davantage de graphiques ainsi que le code utilisé sont
+                disponibles sur \href{https://github.com/Crowreed/GrayCodeCollection}{github}. On peut remarquer que les
+                heuristiques présentées ne modifient pas l'ordre de générations des codes. Ainsi toutes les statistiques
+                présentées ne sont pas influencée par les heuristiques.
+            </div>
+
+            <div class="proposition">
+                On trouve $1920$ codes de Beckett-Gray cycliques pour $n=5$ avec l'algorithme BGC.
+            </div>
+
+            <div class="proposition">
+                Selon <a class="ref-cooke-2016"></a> on trouve 136 571 040 codes de Beckett-Gray cycliques pour $n=6$.
+            </div>
+
+            <div class="paragraph">
+                Dans notre modélisation, on a enregistré les $1920$ codes de Beckett-Gray générés pour $n=5$ et a
+                enregistré leur représentation décimale dans un fichier appelé "codes.txt", on en a fait de même pour
+                1856008 de codes de Beckett-Gray pour $n=6$ et $1$ pour $n=7$. On a utilisé ces fichiers pour commencer
+                l'analyse statistique.
+            </div>
+        </div>
+
+    </main>
+
+    <footer id="main-footer"></footer>
+
+    <script type="module" src="../../src/main.js"></script>
+</body>
+
+</html>

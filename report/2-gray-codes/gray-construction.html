@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+    <!-- metadata -->
+
+    <meta charset="UTF-8">
+    <meta name="robots" content="index, follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Construction</title>
+
+    <meta name="description" content="">
+
+    <meta name="keywords" content="">
+
+    <meta name="author" content="Lucas Petit">
+
+    <link rel="icon" href="/assets/img/logo/logo.ico" type="image/x-icon">
+
+    <!-- for rendering latex -->
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+
+    <!-- JS -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+    <!-- ALL STYLESHEET -->
+
+    <link rel="stylesheet" href="../../src/main.css">
+</head>
+
+<body>
+    <header id="main-header-hihi">
+        <nav>
+            <ul>
+                <li>
+                    <a href="../../">
+                        <svg style="padding-right: 0.5rem" class="flip-horizontal icon backwardArrow"
+                            viewBox="0 0 24 24">
+                            <path d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"></path>
+                        </svg>
+                        Réduction de réseaux
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div id="toc-wrapper"></div>
+
+        <div id="article">
+            <h3>Construction</h3>
+
+            <div class="paragraph">
+                On peut construire récursivement un code de Gray de la manière suivante, cette construction est aussi
+                appelée code binaire réfléchi.
+
+                $$
+                L_0 = \epsilon
+                $$
+
+                $$
+                L_n = 0L_{n-1}, 1\overline{L_{n-1}}
+                $$
+
+                où on a $\Sigma = \{0, 1\}$, $\epsilon$ représente le mot vide $aL_n$ représente la concaténation entre
+                $a$ et $L_n$, avec $a \in \{0, 1\}$ et $\overline{L}$ la réversion de $L$ (le premier élément de L
+                devient le dernier élément de $L$, le deuxième élément de $L$ devient l'avant dernier élément de $L$,
+                etc $\cdots$). Par exemple $\overline{abcd} = dcba$. On remarque le parallèle entre cette construction
+                récursive et la construction récursive dans les hypercubes.
+            </div>
+
+            <div class="paragraph">
+                Par exemple, voici les premières valeurs des listes $L_1$, $L_2$ et $L_3$.
+
+                $$
+                L_1 = 0,1
+                $$
+
+                $$
+                L_2 = 00, 01, 11, 10
+                $$
+
+                $$
+                L_3 = 000, 001, 011, 010, 110, 111, 101, 100
+                $$
+
+                Ainsi, un codage de Gray suivant cette méthode récursive existe toujours.
+            </div>
+        </div>
+
+    </main>
+
+    <footer id="main-footer"></footer>
+
+    <script type="module" src="../../src/main.js"></script>
+</body>
+
+</html>

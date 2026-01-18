@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+    <!-- metadata -->
+
+    <meta charset="UTF-8">
+    <meta name="robots" content="index, follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Implementation des heuristiques et du code pour changer un 1 en 0</title>
+
+    <meta name="description" content="">
+
+    <meta name="keywords" content="">
+
+    <meta name="author" content="Lucas Petit">
+
+    <link rel="icon" href="/assets/img/logo/logo.ico" type="image/x-icon">
+
+    <!-- for rendering latex -->
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+
+    <!-- JS -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+    <!-- ALL STYLESHEET -->
+
+    <link rel="stylesheet" href="../../src/main.css">
+</head>
+
+<body>
+    <header id="main-header-hihi">
+        <nav>
+            <ul>
+                <li>
+                    <a href="../../">
+                        <svg style="padding-right: 0.5rem" class="flip-horizontal icon backwardArrow"
+                            viewBox="0 0 24 24">
+                            <path d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"></path>
+                        </svg>
+                        Réduction de réseaux
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div id="toc-wrapper"></div>
+
+        <div id="article">
+            <h3>
+                Implémentation des heuristiques et du code
+            </h3>
+
+            <div class="paragraph">
+                Cette section est dédiée à tous les codes et les heuristiques que nous avons développés en $Python$ et
+                en C++, accompagnés d'une explication détaillée.
+
+                <!--Les codes utilisés sont disponibles sur
+                \href{https://github.com/Crowreed/GrayCodeCollection}{github}.-->
+
+                Dans le but d'optimiser les performances,
+                nous avons utilisé le fichier EvalPerf proposé par Pascal Giorgi dans son cours de programmation
+                efficace pour tester la performance de nos programmes. Nous évaluons souvent un programme plusieurs fois
+                et calculons la moyenne des temps d'exécution. De plus, nous avons utilisé l'option de compilation -O3
+                pour paralléliser le code de manière efficace.
+            </div>
+
+            <h4>BGC</h4> <!--%créateur : Mattéo-->
+
+            <div class="algorithm">
+                void BGC(int x) {
+                if (s >= pow(2,n) && pw2(bgc[bgc.size()-1])) {
+                listeCodeBGC.push_back(bgc);
+                return;
+                }
+                for (int i=0; i&lt;n; i++) { int xn=flip[x][i]; int bit=n-i-1; if (avail[xn] && (bi[xn][bit]==1 ||
+                bit==old[0])) { if (bi[xn][bit]==1){ old.push_back(bit); } else{ old.erase(old.begin()); }
+                avail[xn]=false; bgc.push_back(xn); s++; BGCHeuristique(xn); s--; if (bi[xn][bit]==1){
+                old.pop_back(); } else{ old.insert(old.begin(),bit); } avail[xn]=true; bgc.pop_back(); } } return; }
+            </div>
+
+
+            <div class="paragraph">
+                Il s'agit d'un code de génération de codes de Beckett-Gray sur $n$ bits, sans aucune heuristique.
+                On reprend le pseudo code vu en 4.3, en ajoutant la condition de Beckett-Gray sous forme de file avec
+                $old$, le test étant effectué à la ligne 9. On met à jour $old$ à chaque appel récursif (lignes 10 à
+                15), soit en retirant le premier bit dans lequel on a mis un $1$ lorsque on le passe à $0$, soit on
+                rajoute le bit courant dans lequel on passe de $0$ à $1$. Pour $n=5$, il faut 64 476 166 appels de
+                fonctions pour générer tous les codes de Beckett-Gray. Le temps d'exécution prend en moyenne $2.839$
+                secondes sur nos machines.
+            </div>
+
+            <div class="paragraph">
+                C'est sur cette fonction que l'on rajoutera ensuite toutes les heuristiques. De manière générale pour ce
+                code et les heuristiques qui vont suivre, les variables au départ passées en argument de la fonction BGC
+                ont été ensuite passées en variables globales afin d'améliorer les accès mémoire. Pour les heuristiques
+                et les mises à jour de listes, au départ des fonctions existaient puis elles ont été supprimées pour
+                être directement incluses dans BGC. On peut aussi notamment parler des liste bi et flip, représentant
+                respectivement la représentation binaire des entiers et l'entier obtenu en inversant un certains bit
+                d'un autre entier, transformées en variables globales pour ne pas à avoir à appeler une fonction à
+                chaque fois.
+            </div>
+
+            <h4>Implémentation : Heuristique sur les sommets pendants</h4>
+
+            <div class="paragraph">
+                Pour palier aux temps d'exécution devenant beaucoup trop important pour les $n$ plus grands que $5$, on
+                implémente des heuristiques, dont la première sur les sommets pendants. On commence par mettre dans une
+                liste $nombreVoisins$ le nombre de voisins pour chaque sommet encore disponibles. Cette liste est
+                initialisée à $n$ pour tous les sommets au départ (car $\mathcal{Q}_n$ est de degré $n$). À chaque fois
+                qu'un sommet est choisi dans la création du cycle hamiltonien, on fait baisser le compteur dans cette
+                liste de tous ses voisins. À chaque appel récursif on effectue ce test pour savoir si il y a un sommet
+                isolé :
+            </div>
+
+            <div class="algorithm">
+                int cmpt=0;
+                int xn=0;
+                int bit=0;
+                for (int i=0; i<n; i++) { int fxi=flip[x][i]; if (nombreVoisins[fxi]==1 && avail[fxi]){ cmpt++; if
+                    (cmpt>1){
+                    return;
+                    }
+                    xn=fxi;
+                    bit=n-i-1;
+                    }
+                    }
+            </div>
+
+            <div class="paragraph">
+                On test si un sommet disponible n'a plus que le sommet courant comme voisin, si oui on ne parcourra
+                pas tout de suite ce sommet. Si il y a plus de $2$ sommets isolés voisins du sommet courant $x$, il
+                n'est plus possible de faire un cycle hamiltonien, d'où le test ligne 8.
+            </div>
+
+            <div class="paragraph">
+                On obtient au final pour $n=5$ un total de \num{8 093 206} appels, réduisant fortement le nombre
+                d'appels récursifs, pour un temps d'exécution moyen de $0.511$ secondes.
+            </div>
+
+            <h4>Implémentation : Heuristique sur la propriété eulérienne</h4>
+
+            <div class="paragraph">
+                Cette heuristique a été implémentée en utilisant une liste contenant le nombre de voisins encore
+                disponibles entre chaque ensembles $V_0, V_1, \cdots , V_n$ avec $V_i$ contenant les sommets avec
+                exactement $i$ bits à 1. Ce nombre correspond au double du résultat du triangle de Pascal. A chaque
+                appel récursif, on met à jour ce nombre de voisins en fonction du sommet visité. Un test est effectué à
+                chaque appel récursif :
+            </div>
+
+            <div class="algorithm">
+                if (!(V[x]==0 or V[x]==n) && listeVoisinV[V[x]-1]==1 && listeVoisinV[V[x]]>0)
+            </div>
+
+            <div class="paragraph">
+                Si l'ensemble $V$ courant n'est pas un de ceux avec un unique élément, on regarde si le nombre de
+                chemins entre $V_i$ et $V_{i-1}$ est égal à $1$, et si le nombre de chemins entre $V_i$ et $V_{i+1}$ est
+                supérieur strictement à $0$, alors on explore que les sommets de $V_{i+1}$, contenant les nombres avec
+                un bit supplémentaire à $1$.
+            </div>
+
+            <div class="paragraph">
+                Cette heuristique réduit le nombre d'appel de fonctions pour $n=5$ à 6 778 966 (en utilisant toujours
+                celle sur les sommets pendants), et réduit le temps d'exécution à $0.458$ secondes en moyenne.
+            </div>
+
+            <div class="paragraph">
+                Cependant, une autre approche a aussi été utilisée, et ne considérant cette fois que l'ensemble $V_1$,
+                contenant toutes les puissances de $2$.
+            </div>
+
+            <div class="algorithm">
+
+                if (V[x]==1){
+                bool flag=false;
+                for (int i : power2){
+                if (avail[i]){
+                flag=true;
+                break;
+                }
+                }
+                if (!flag) {.
+                return;
+                }
+                }
+
+            </div>
+
+
+            <div class="paragraph">
+                On regarde juste si il reste des puissances de $2$ dans les sommets encore à parcourir au début
+                de la fonction, sinon on ne pourrait plus revenir en $0$ et faire un cycle. Pour $n=5$, cette
+                heuristique retire moins d'appels de fonctions que l'heuristique précédente, avec 6 895 246 au total.
+                Toutefois son implémentation est moins coûteuse n'étant exécutée que quand le sommet courant est une
+                puissance de $2$ et ne nécessitant pas une mise à jour de liste à chaque appel récursif, on obtient
+                $0.448$ secondes en moyenne pour temps d'exécution. Faire les deux heuristiques en même temps ne retire
+                que un nombre minimal d'appels récursifs, et ne vaut pas la peine comparé au coût de l'implémentation.
+                Mais il encore possible d'obtenir de meilleurs résultats. L'idée est de vérifier lorsque le sommet
+                courant est dans $V_i$, si $V_{i-1}$ contient encore au moins un sommet. On ne raisonne plus sur les
+                arcs comme au début, mais sur les sommets. On en créer une avec le nombre de sommet de chaque $V_i$ et
+                on fait ce simple test :
+            </div>
+
+            <div class="algorithm">
+                <div class="conditional">
+
+                </div>
+                if (V[x]>1 and nbEltEns[V[x]-1]==0){
+                return;
+                }
+
+            </div>
+
+            <div class="paragraph">
+                On supprime encore moins d'appels de fonctions, avec 6 981 766, mais l'exécution est la plus rapide des
+                trois en 0.441 secondes en moyenne. C'est donc celle-ci qui sera utilisée. On obtient bien de meilleurs
+                résultats avec cette façon de faire, mais pour générer le premier code de Beckett-Gray $n=7$, elle ne
+                fait gagner que $3$ minutes (sur près de $18$ heures de calcul) comparé à la précédente façon de faire.
+            </div>
+
+            <h4>Implémentation : Heuristique sur le nombre d’itérations pour changer un 1 en 0</h4>
+
+            <div class="paragraph">
+                Cette heuristique a été implémentée de la même façon que la liste $old$ utilisée pour savoir quel est
+                l'ordre d'entrée des bits passés à $1$ dans le code. Il s'agit cette fois de regarder à quel appel
+                récursif cette entrée a eu lieu, ce que l'on stocke dans le vecteur $oldS$. On effectue ce test une fois
+                par appel récursif :
+            </div>
+
+
+            <div class="algorithm">
+                if (s>1 && s-oldS[0]>nbMax[n]){
+                return;
+                }
+            </div>
+
+            <div class="paragraph">
+                On obtient 6 654 406 appels de fonction, pour un temps d'exécution de 0.428 secondes en
+                moyenne.
+            </div>
+
+            <div class="paragraph">
+                Néanmoins cette heuristique pose un problème, comment savoir sans avoir préalablement généré des codes
+                de Beckett Gray quel est le nombre maximum de $1$ à la suite possible. Pour $n=5$ ça ne pose pas de
+                problème, on les connaît tous et ce nombre est de $7$. Pour $n=6$, on arrive à en générer beaucoup et le
+                maximum obtenu est de $10$. Mais à partir de $n=7$ où notre objectif était de générer un premier code,
+                on ne peut faire qu'une estimation du nombre maximum. Cependant augmenter légèrement ce nombre n'a
+                quasiment aucun impact sur le temps d'exécution de l'algorithme, mais trop le baisser pourrait supprimer
+                des résultats.
+            </div>
+        </div>
+
+    </main>
+
+    <footer id="main-footer"></footer>
+
+    <script type="module" src="../../src/main.js"></script>
+</body>
+
+</html>

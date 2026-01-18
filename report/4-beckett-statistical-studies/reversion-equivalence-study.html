@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+    <!-- metadata -->
+
+    <meta charset="UTF-8">
+    <meta name="robots" content="index, follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Etude de l’equivalence sous reversion</title>
+
+    <meta name="description" content="">
+
+    <meta name="keywords" content="">
+
+    <meta name="author" content="Lucas Petit">
+
+    <link rel="icon" href="/assets/img/logo/logo.ico" type="image/x-icon">
+
+    <!-- for rendering latex -->
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+
+    <!-- JS -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+    <!-- ALL STYLESHEET -->
+
+    <link rel="stylesheet" href="../../src/main.css">
+</head>
+
+<body>
+    <header id="main-header-hihi">
+        <nav>
+            <ul>
+                <li>
+                    <a href="../../">
+                        <svg style="padding-right: 0.5rem" class="flip-horizontal icon backwardArrow"
+                            viewBox="0 0 24 24">
+                            <path d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"></path>
+                        </svg>
+                        Réduction de réseaux
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div id="toc-wrapper"></div>
+
+        <div id="article">
+            <h3>Étude de l'équivalence sous réversion</h3>
+
+            <div class="paragraph">
+                Il est pertinent d'étudier l'indice d'un code généré par rapport à l'indice de sa réversion, et de
+                représenter ces indices sur un graphique, comme illustré ci-dessous. Un point (x,y) est dans ce
+                graphique si le code $c_1$ d'indice $x$ est la réversion du code $c_2$ d'indice $y$.
+            </div>
+
+            <figure>
+                <div class="fig-container">
+                    <img src="images/woooo.png" alt="" srcset="">
+                </div>
+
+                <figcaption>Indices des codes de Beckett-Gray et de leur réversion pour $n=5$</figcaption>
+            </figure>
+
+            <div class="paragraph">
+                Cette figure est remarquable, on remarque plusieurs choses d'un seul coup d'oeil :
+
+                <ul>
+                    <li>
+                        <div class="underline">Distribution des Points :</div>
+
+                        <div class="paragraph">
+                            Les points sont répartis de manière relativement uniforme, mais il existe des zones de plus
+                            forte densité. Certaines zones présentent une structure plus claire, ce qui peut indiquer
+                            des motifs récurrents dans les indices des codes inversés.
+                        </div>
+                    </li>
+                    <li>
+                        <div class="underline">Zones de Concentration :</div>
+
+                        <div class="paragraph">
+                            On observe des bandes horizontales et verticales où les points sont plus concentrés,
+                            suggérant que certains indices de codes inversés apparaissent fréquemment en relation avec
+                            des indices spécifiques de codes originaux.
+                        </div>
+                    </li>
+                    <li>
+                        <div class="underline">Symétrie et Répartition :</div>
+
+                        <div class="paragraph">
+                            Il y a une symétrie au niveau des structures apparente autour de la diagonale principale
+                            (qui va de (0,0) à (1920,1920)).
+                        </div>
+                    </li>
+                    <li>
+                        <div class="underline">Gaps et espaces vides :</div>
+
+                        <div class="paragraph">
+                            Il y a des zones vides où aucun point n'est présent. On l'interprète comme ceci : parmi les
+                            $384 = 1920/5$ premiers codes aucune réversion n'est présente dans les $384$ premiers, et
+                            ainsi de suite. Ces gaps peuvent être dus à la nature des transformations de Beckett-Gray et
+                            de leurs inversions, qui ne couvrent pas tous les indices de manière uniforme. Ces gaps sont
+                            au nombre de $5$, cela laisse suggérer que pour $n=6$ ces gaps seraient au nombre de $6$.
+                            Ces gaps interviennent tous les $384 = 1920/5$ codes, cela laisse suggérer que ces gaps
+                            interviendraient tous les $22761840 = 136571040/6$ codes. A l'heure actuelle de l'écriture
+                            de ce paragraphe, Lucas a généré $5$ millions de codes de Beckett-Gray pour $n=6$, ne
+                            pouvant pour l'instant pas vérifier la présence d'un gap ou non, mais en calculant, on ne
+                            trouve aucune réversion, ce qui laisse suggérer que cette hypothèse est vraie. On remarque
+                            que les $384$ derniers codes sont donc inutiles à générer, comme ils sont des réversions des
+                            premiers, on pourrait donc couper l'algorithme $384$ codes avant la fin, et cela laisse
+                            suggérer qu'on pourrait couper 22761840 codes avant la fin pour $n=6$, ce qui peut être une
+                            énorme amélioration.
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="paragraph">
+                En conclusion le graphique montre que les indices des codes de Beckett-Gray et leurs reversions ont une
+                relation complexe. Les motifs de concentration et les zones vides suggèrent que certaines inversions
+                sont plus courantes que d'autres, et que l'inversion n'est pas une transformation simple des indices.
+            </div>
+        </div>
+
+    </main>
+
+    <footer id="main-footer"></footer>
+
+    <script type="module" src="../../src/main.js"></script>
+</body>
+
+</html>

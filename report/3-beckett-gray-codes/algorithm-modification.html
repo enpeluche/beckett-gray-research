@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+    <!-- metadata -->
+
+    <meta charset="UTF-8">
+    <meta name="robots" content="index, follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Modification de l’algorithme</title>
+
+    <meta name="description" content="">
+
+    <meta name="keywords" content="">
+
+    <meta name="author" content="Lucas Petit">
+
+    <link rel="icon" href="/assets/img/logo/logo.ico" type="image/x-icon">
+
+    <!-- for rendering latex -->
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+
+    <!-- JS -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+    <!-- ALL STYLESHEET -->
+
+    <link rel="stylesheet" href="../../src/main.css">
+</head>
+
+<body>
+    <header id="main-header-hihi">
+        <nav>
+            <ul>
+                <li>
+                    <a href="../../">
+                        <svg style="padding-right: 0.5rem" class="flip-horizontal icon backwardArrow"
+                            viewBox="0 0 24 24">
+                            <path d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"></path>
+                        </svg>
+                        Réduction de réseaux
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <div id="toc-wrapper"></div>
+
+        <div id="article">
+            <h3>Modification de l'algorithme</h3>
+
+            <div class="paragraph">
+                Pour générer des codes de Beckett-Gray, nous pouvons modifier l'algorithme décrit ci-dessus pour
+                appliquer la restriction finale de Beckett : si un bit est changé d'un $1$ à un $0$ dans des chaînes
+                successives, il doit être le bit qui a été un $1$ pendant le plus longtemps. Cela peut être fait avec
+                une file de type FIFO. Cependant, si nous appliquons les améliorations supplémentaires pour les codes de
+                Beckett-Gray cycliques sur des chaînes binaires qui ont été décrites dans la section précédente, nous
+                obtenons quelques améliorations significatives. Grâce à ces heuristiques, pour $n = 6$, nous obtenons
+                une accélération d'un facteur d'environ $60$ selon <a class="ref-sawada-2007"></a>.
+            </div>
+        </div>
+
+    </main>
+
+    <footer id="main-footer"></footer>
+
+    <script type="module" src="../../src/main.js"></script>
+</body>
+
+</html>

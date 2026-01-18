@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+    <!-- metadata -->
+
+    <meta charset="UTF-8">
+    <meta name="robots" content="index, follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Nombre de bit a 1 dans la representation binaire des codes de Beckett-Gray</title>
+
+    <meta name="description" content="">
+
+    <meta name="keywords" content="">
+
+    <meta name="author" content="Lucas Petit">
+
+    <link rel="icon" href="/assets/img/logo/logo.ico" type="image/x-icon">
+
+    <!-- for rendering latex -->
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+
+    <!-- JS -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+    <!-- ALL STYLESHEET -->
+
+    <link rel="stylesheet" href="../../src/main.css">
+</head>
+
+<body>
+    <header id="main-header-hihi">
+        <nav>
+            <ul>
+                <li>
+                    <a href="../../">
+                        <svg style="padding-right: 0.5rem" class="flip-horizontal icon backwardArrow"
+                            viewBox="0 0 24 24">
+                            <path d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"></path>
+                        </svg>
+                        Réduction de réseaux
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div id="toc-wrapper"></div>
+
+        <div id="article">
+            <h3>Nombre de bit à $1$ dans la représentation binaire des codes de Beckett-Gray</h3>
+
+            <div class="paragraph">
+                Voici les premier tableaux représentant le nombre de bit à $1$ dans la représentation binaire de chaque
+                élément des premiers codes de Beckett-Gray générés pour $n = 5$, $n = 6$ et $n = 7$.
+            </div>
+
+            <figure>
+                <div class="carousel">
+                    <img src="images/BGC_5_nb_ones_line_0.png" alt="">
+                    <img src="images/BGC_5_nb_ones_line_2.png" alt="">
+
+                </div>
+
+                <figcaption>
+                    Nombre de bit à $1$ dans la représentation binaire des codes de Beckett-Gray pour $n = 5$
+                </figcaption>
+            </figure>
+
+            <figure>
+                <div class="carousel">
+                    <img src="images/BGC_6_nb_ones_line_0.png" alt="">
+                    <img src="images/BGC_6_nb_ones_line_2.png" alt="">
+                </div>
+
+                <figcaption>
+                    Nombre de bit à 1 dans la représentation binaire des codes de Beckett-Gray pour $n = 6$
+                </figcaption>
+            </figure>
+
+            <figure>
+                <div class="fig-container">
+                    <img src="images/BGC_7_nb_ones_line_0.png" alt="">
+                </div>
+
+                <figcaption>
+                    Nombre de bit à $1$ dans la représentation binaire des codes de Beckett-Gray pour $n = 7$
+                </figcaption>
+            </figure>
+
+            <div class="paragraph">
+                Pour un $n$ donné, on observe de légères fluctuations entre les motifs des codes de Beckett-Gray
+                successifs. On remarque principalement des variations entre deux graphe qui ressemblent à des
+                permutations de segments de graphe, ainsi que des transitions où un bit à $1$ est remplacé par un bit à
+                $0$ et vice versa, ce qui se traduit par des sommets devenant des vallées et des vallées devenant des
+                sommets. Ces fluctuations se manifestent sous forme de dents de scie sur le graphique, où l'axe des
+                abscisses représente le numéro de la colonne d'un code de Beckett-Gray et l'axe des ordonnées le nombre
+                de $1$ dans sa représentation binaire. On remarque que deux codes de Beckett-Gray isomorphes ont le même
+                nombre de bit à $1$ dans leur représentation binaire, et donc le même graphique, on s'attend ainsi à
+                avoir seulement $8$ graphiques vraiment différents pour $n=5$.
+            </div>
+        </div>
+
+    </main>
+
+    <footer id="main-footer"></footer>
+
+    <script type="module" src="../../src/main.js"></script>
+</body>
+
+</html>

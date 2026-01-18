@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+    <!-- metadata -->
+
+    <meta charset="UTF-8">
+    <meta name="robots" content="index, follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Tables de transitions</title>
+
+    <meta name="description" content="">
+
+    <meta name="keywords" content="">
+
+    <meta name="author" content="Lucas Petit">
+
+    <link rel="icon" href="/assets/img/logo/logo.ico" type="image/x-icon">
+
+    <!-- for rendering latex -->
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+
+    <!-- JS -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+    <!-- ALL STYLESHEET -->
+
+    <link rel="stylesheet" href="../../src/main.css">
+</head>
+
+<body>
+    <header id="main-header-hihi">
+        <nav>
+            <ul>
+                <li>
+                    <a href="../../">
+                        <svg style="padding-right: 0.5rem" class="flip-horizontal icon backwardArrow"
+                            viewBox="0 0 24 24">
+                            <path d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"></path>
+                        </svg>
+                        Réduction de réseaux
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div id="toc-wrapper"></div>
+
+        <div id="article">
+            <h3>Tables de transitions</h3>
+
+            <div class="paragraph">
+                Une table de transition est une matrice $n\times n$ où $n$ est le nombre de valeurs. Chaque cellule
+                $(i,j)$ de la matrice représente la probabilité que l'entier $i$ soit suivi par l'entier $j$.
+            </div>
+
+            <div class="paragraph">
+                Les trois figures suivantes représentent les tables de transition des codes de Beckett-Gray pour
+                respectivement $n=5$, $n=6$ et $n=7$. Ces tables de transition sont identiques à celles des codes de
+                Gray.
+            </div>
+
+            <figure>
+                <div class="fig-container">
+                    <img src="images/transition_BGC_5.png" alt="">
+                </div>
+                <figcaption>
+                    Table de transition des codes de Beckett-Gray pour $n = 5$
+                </figcaption>
+            </figure>
+
+            <figure>
+                <div class="fig-container">
+                    <img src="images/transition_BGC_6.png" alt="">
+                </div>
+
+                <figcaption>
+                    Table de transition des codes de Beckett-Gray pour $n = 6$
+                </figcaption>
+            </figure>
+
+            <figure>
+                <div class="fig-container">
+                    <img src="images/transition_BGC_7.png" alt="">
+                </div>
+
+                <figcaption>
+                    Table de transition des codes de Beckett-Gray pour $n = 7$
+                </figcaption>
+            </figure>
+
+            <div class="paragraph">
+                Ce qui est surprenant, c'est la structure fractale qui émerge dans ces tables. Pour n=5, les transitions
+                sont toutes équiprobables. Cela est remarquable car la contrainte d'être un code Beckett-Gray est forte.
+                On rappelle qu'on a généré la liste exhaustive des codes de Beckett-Gray pour $n = 5$. Pour $n = 6$, la
+                table de transition n'est pas équiprobable, ce qui peut s'expliquer par le fait que tous les codes
+                possibles n'ont pas été générés. Pour $n = 7$, la situation est particulière : un seul code a été
+                généré, et la table de transition reflète uniquement ce code unique. On remarque que pour $n = 5$ on a
+                $5$ transitions pour un entier fixé, pour $n = 6$ on a $6$ transitions et ainsi de suite, ce qui
+                s'explique par le caractère binaire des sommets, on a $n$ changements possibles d'un bi à chaque fois.
+            </div>
+        </div>
+
+    </main>
+
+    <footer id="main-footer"></footer>
+
+    <script type="module" src="../../src/main.js"></script>
+</body>
+
+</html>

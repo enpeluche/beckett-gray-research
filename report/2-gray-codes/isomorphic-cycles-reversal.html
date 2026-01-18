@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+    <!-- metadata -->
+
+    <meta charset="UTF-8">
+    <meta name="robots" content="index, follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Cycles isomorphes dans l’hypercube vu comme un graphe de retournement</title>
+
+    <meta name="description" content="">
+
+    <meta name="keywords" content="">
+
+    <meta name="author" content="Lucas Petit">
+
+    <link rel="icon" href="/assets/img/logo/logo.ico" type="image/x-icon">
+
+    <!-- for rendering latex -->
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+
+    <!-- JS -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+    <!-- ALL STYLESHEET -->
+
+    <link rel="stylesheet" href="../../src/main.css">
+</head>
+
+<body>
+    <header id="main-header-hihi">
+        <nav>
+            <ul>
+                <li>
+                    <a href="../../">
+                        <svg style="padding-right: 0.5rem" class="flip-horizontal icon backwardArrow"
+                            viewBox="0 0 24 24">
+                            <path d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"></path>
+                        </svg>
+                        Réduction de réseaux
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div id="toc-wrapper"></div>
+
+        <div id="article">
+            <h3>Cycles isomorphes dans l'hypercube vu comme un graphe de retournement</h3>
+
+            <div class="paragraph">
+                Une autre notion que nous allons examiner sur l'hypercube $\mathcal{Q}_n$ en le considérant comme un
+                graphe de retournement, concerne les cycles isomorphes. La notion de cycles isomorphes nous amène à
+                la notion de code de Gray isomorphes, c'est donc une notion très utile pour étudier la structure des
+                codes de Gray. Dans toute la suite on suppose $n > 3$. On définit préalablement ce qu'on entends par
+                l'égalité de deux cycles. Deux cycles $c_1$ et $c_2$ sont dis égaux si ils parcourent les mêmes sommets
+                dans le même ordre.
+            </div>
+
+            <div class="definition">
+                Une permutation de l'ensemble $\{1, \cdots, n\}$ est une bijection de $\{1, \cdots, n\}$ dans $\{1,
+                \cdots, n\}$.
+            </div>
+
+            <div class="definition">
+                On appelle groupe symétrique d’indice $n$, noté $\mathcal{G}_n$ l’ensemble des permutations de
+                l’ensemble
+                $\{1, 2, 3, \cdots , n\}$.
+            </div>
+
+            <div class="definition">
+                Une permutation circulaire $\sigma$ de $\{a_1, \cdots, a_k\}$ est définie par $\sigma(a_j) = a_{j+1}$
+                pour tout $j \in \{1, \cdots, n-1\}$ et $\sigma(i_n) = \sigma (a_1)$
+            </div>
+
+            <div class="paragraph">
+                Du point de vue informatique, on prend le dernier élément d'une liste, qu'on rajoute au début de la
+                liste. L'inverse d'une permutation circulaire consiste à prendre le premier élément de la liste et le
+                mettre à la fin de cette liste. C'est une involution.
+
+            </div>
+
+            <div class="proposition">
+                On a $|\mathcal{G}_n|=n!$.
+            </div>
+
+            <div class="definition">
+                On dit que deux codes de Gray $c_1=(v_1, \cdots, v_n)$ et $c_2=(w_1, \cdots, w_n)$ sont isomorphes si il
+                existe $\sigma \in \mathcal{G}_n$ tel que :
+
+                Pour tout $i \in \{1, \cdots, n\}$, $v_i=\sigma(w_i)$ où $\sigma (w_i)$ désigne la permutation des
+                coordonnées de $w_i$.
+            </div>
+
+            <div class="paragraph">
+                On note $c_1 \simeq c_2$ si $c_1$ est isomorphe à $c_2$.
+
+            </div>
+
+            <div class="proposition">
+                $\simeq$ est une relation d'équivalence.
+            </div>
+
+            <div class="proof">
+                Il faut montrer que $\simeq$ est réflexive, symétrique et transitive.
+
+                <ul>
+                    <li>
+                        $\simeq$ est \underline{réflexive} :
+
+                        $$
+                        c_1 \simeq c_1
+                        $$
+
+                        en revenant à la définition de cycles isomorphes et prenant la permutation identité.
+                    </li>
+
+                    <li>
+                        $\simeq$ est \underline{symétrique} :
+
+                        si $c_1 \simeq c_2$ alors $c_2 \simeq c_1$ en revenant à la définition de cycles isomorphes et
+                        prenant la permutation inverse.
+                    </li>
+
+                    <li>
+                        $\simeq$ est \underline{transitive} :
+
+                        si $c_1 \simeq c_2$ et $c_2 \simeq c_3$ alors $c_1 \simeq c_3$ en revenant à la définition de
+                        cycles isomorphes et en prenant la composition des deux permutations.
+                    </li>
+                </ul>
+            </div>
+
+            <div class="paragraph">
+                On peut donc parler de classes d'équivalences de cycles isomorphes que l'on notera
+
+                $$
+                eq_c := \{c ~|~ c \simeq a\}
+                $$, le choix d'un représentant $c$ est arbitraire.
+            </div>
+
+            <div class="proposition">
+                Dans $\mathcal{Q}_n$, $\# eq_c = n!$.
+            </div>
+
+            <div class="paragraph">
+                Si on trouve un cycle hamiltonien sur $\mathcal{Q}_n$ on peut en trouver $n!$ autres cycles hamiltonien.
+                Cela nous donne une borne inférieur du nombre de code de cycles hamiltonien dans $\mathcal{Q}_n$.
+            </div>
+
+            <div class="proposition">
+                Il y a $\binom{n}{i}$ mots possibles de longueur $n$ sur l'alphabet $\{0,1\}$ qui possède $i$ fois la
+                lettre $1$.
+            </div>
+
+            <div class="paragraph">
+                On retrouve la formule $2^n= \binom{n}{i} + \cdots + \binom{n}{n}$.
+            </div>
+
+            <div class="proposition">
+                Une permutation d'un mot binaire qui possède $i$ bits à $1$ possède toujours $i$ bits à $1$.
+            </div>
+
+            <div class="paragraph">
+                On a donc une façon de détecter si deux cycles ne sont pas isomorphes en comparant le nombre de bit à
+                $1$ dans leur éléments successifs.
+            </div>
+
+            <div class="proposition">
+                Il n'y a que deux mots de longueur $n$ qui sont fixés par toutes les permutations de $\mathcal{G}_n$ :
+                le mot $1^n$ et le mot $0^n$.
+            </div>
+
+            <div class="paragraph">
+                On peut l'interpréter comme le fait que certains sommets du graphe sont une étape incontournable pour
+                tout isomorphisme d'un code de Gray.
+            </div>
+        </div>
+
+    </main>
+
+    <footer id="main-footer"></footer>
+
+    <script type="module" src="../../src/main.js"></script>
+</body>
+
+</html>

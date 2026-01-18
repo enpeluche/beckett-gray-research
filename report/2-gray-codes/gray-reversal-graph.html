@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+    <!-- metadata -->
+
+    <meta charset="UTF-8">
+    <meta name="robots" content="index, follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Graphe de retournement</title>
+
+    <meta name="description" content="">
+
+    <meta name="keywords" content="">
+
+    <meta name="author" content="Lucas Petit">
+
+    <link rel="icon" href="/assets/img/logo/logo.ico" type="image/x-icon">
+
+    <!-- for rendering latex -->
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+
+    <!-- JS -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+    <!-- ALL STYLESHEET -->
+
+    <link rel="stylesheet" href="../../src/main.css">
+</head>
+
+<body>
+    <header id="main-header-hihi">
+        <nav>
+            <ul>
+                <li>
+                    <a href="../../">
+                        <svg style="padding-right: 0.5rem" class="flip-horizontal icon backwardArrow"
+                            viewBox="0 0 24 24">
+                            <path d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"></path>
+                        </svg>
+                        Réduction de réseaux
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div id="toc-wrapper"></div>
+
+        <div id="article">
+            <h3>Graphe de retournement</h3>
+
+            <div class="paragraph">
+                Le graphe de retournement est un concept utilisé dans le domaine des codes de Gray et des problèmes
+                combinatoires.
+                Ce graphe est utilisé pour représenter les relations entre les objets combinatoires qui sont générés ou
+                répertoriés
+                par un code de Gray. On appellera parfois retournement par flip, la notation anglaise.
+            </div>
+
+            <div class="paragraph">
+                Dans un graphe de retournement, chaque sommet représente un objet combinatoire, comme une séquence de
+                $n$-bits dans le cas des codes de Gray sur des mots binaires de tailles $n$. Deux sommets sont reliés
+                par une arête si les objets correspondants diffèrent par une petite modification, souvent appelée
+                "retournement", ce retournement correspond à une distance qui est appelée distance de Hamming et est
+                souvent égale à $1$. Par exemple, dans le contexte des codes de Gray, un retournement peut être
+                l'inversion d'un seul bit dans la séquence. Si le retournement est une opération réversible,
+                c'est-à-dire qu'elle ramène l'objet initial à son état d'origine lorsqu'elle est appliquée deux fois, le
+                graphe de retournement est non dirigé. Un graphe de retournement offre une représentation visuelle des
+                relations entre les objets combinatoires générés par un code de Gray, ce qui facilite l'analyse et la
+                compréhension des propriétés et des comportements de ces codes. \newline
+            </div>
+
+            <div class="paragraph">
+
+                Voici par exemple le graphe de retournement des sous-ensemble de $\{1, 2, 3, 4, 5\}$ de taille $2$,
+                aussi connu sous le nom de graphe de Kneser pour $n=5$ et $k=2$, aussi noté $K(5, 2)$, deux sommets sont
+                voisins si ils sont disjoints.
+
+            </div>
+
+            <figure>
+                <div>
+                    <img src="images/reversal.png" alt="" srcset="">
+                </div>
+            </figure>
+
+            <div class="paragraph">
+                Le graphe de retournement associé au code de Gray pour une distance de Hamming de $1$ correspond à
+                l'hypercube $\mathcal{Q}_n$, une structure topologique importante en informatique parallèle et
+                distribuée. Ainsi, les propriétés du graphe de retournement fournissent des informations précieuses sur
+                les relations entre les éléments du code de Gray et sur la structure de l'hypercube.
+            </div>
+        </div>
+
+    </main>
+
+    <footer id="main-footer"></footer>
+
+    <script type="module" src="../../src/main.js"></script>
+</body>
+
+</html>

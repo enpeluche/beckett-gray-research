@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+    <!-- metadata -->
+
+    <meta charset="UTF-8">
+    <meta name="robots" content="index, follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Codes de Beckett-Gray</title>
+
+    <meta name="author" content="Lucas Petit">
+
+    <link rel="icon" href="/assets/img/logo/logo.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="src/style.css">
+    <link rel="stylesheet" href="src/main.css">
+</head>
+
+<body>
+    <style>
+        .image-rotative {
+            position: fixed;
+            position: fixed;
+            display: block;
+            /* On place le point d'ancrage au milieu de l'écran */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+            width: 135%;
+
+
+            animation: rotation 150s infinite linear;
+
+            z-index: -6;
+        }
+
+        @keyframes rotation {
+            from {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+
+            to {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+    </style>
+
+    <img src="../src/beckett-gray-codes-card.png" class="image-rotative" alt="">
+
+    <div id="toc-wrapper"></div>
+    <main>
+
+
+        <div id="project-page">
+            <div>
+                <h1 id="project-title">Exploration des Codes de Gray et des Codes de Beckett-Gray</h1>
+                <h2 id="project-subtitle">Implementation, Heuristiques et Analyses Statistiques dans le Contexte de
+                    l’Hypercube.</h2>
+            </div>
+            <div id="project-container" class="resume"></div>
+
+            <div id='news-container'></div>
+        </div>
+    </main>
+
+    <script type="module" src="src/main.js"></script>
+</body>
+
+</html>

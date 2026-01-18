@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+    <!-- metadata -->
+
+    <meta charset="UTF-8">
+    <meta name="robots" content="index, follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Organisation du travail</title>
+
+    <meta name="description" content="">
+
+    <meta name="keywords" content="">
+
+    <meta name="author" content="Lucas Petit">
+
+    <link rel="icon" href="/assets/img/logo/logo.ico" type="image/x-icon">
+
+    <!-- for rendering latex -->
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+
+    <!-- JS -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+    <!-- ALL STYLESHEET -->
+
+    <link rel="stylesheet" href="../../src/main.css">
+</head>
+
+<body>
+    <header id="main-header-hihi">
+        <nav>
+            <ul>
+                <li>
+                    <a href="../../">
+                        <svg style="padding-right: 0.5rem" class="flip-horizontal icon backwardArrow"
+                            viewBox="0 0 24 24">
+                            <path d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"></path>
+                        </svg>
+                        Réduction de réseaux
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div id="toc-wrapper"></div>
+
+        <div id="article">
+            <h2>Organisation du travail</h2>
+
+            <div class="paragraph">
+                Nous avons commencé à travailler sur le TER à la fin du mois de janvier, initialement en groupe de
+                quatre personnes. Notre première tâche a été de lire et de nous approprier l'article de Torsten Mütze
+                <br> <a class="ref-torsten-2023"></a>. Ensuite, nous avons développé des codes en JavaScript pour
+                générer des codes de Gray de différents types. Le choix de JavaScript s'explique par la possibilité de
+                visualiser ces codes sur une page web. Par la suite, il nous a été demandé de choisir un problème non
+                résolu de l'article. Nous avons opté pour celui concernant les codes de Beckett-Gray et commencé notre
+                rapport en $\LaTeX$. Nous nous sommes documentés avec <a class="ref-sawada-2007"></a> et <a
+                    class="ref-cooke-2016"></a>.
+            </div>
+
+            <div class="paragraph">
+                Vers la sixième semaine de travail, deux membres ont quitté notre groupe, nous laissant à deux pour nous
+                répartir les tâches. À ce moment-là, Lucas s'est principalement concentré sur la rédaction du rapport
+                tandis que Mattéo s'occupait du codage. Une problématique de notre TER était de développer des
+                heuristiques. Pour le codage, nous avons abandonné JavaScript au profit de Python, un langage que nous
+                maîtrisons mieux. Cependant, une fois les codes fonctionnels obtenus, nous avons décidé de les
+                transcrire en C\texttt{++} pour améliorer les temps d'exécution, délaissant également Python pour ces
+                tâches, bien qu'il reste utilisé pour l'exploitation des résultats.
+            </div>
+
+            <div class="paragraph">
+                Après cela, Lucas a principalement effectué des analyses statistiques sur les codes de Beckett-Gray pour
+                $n=5$ et $n=6$ afin de voir si l'on pouvait en déduire des propriétés, tandis que Mattéo a poursuivi
+                l'écriture du rapport. Voici le diagramme de Gantt associé :
+            </div>
+
+            <figure>
+                <div class="fig-container">
+                    <img src="images/work.png" alt="">
+                </div>
+            </figure>
+        </div>
+    </main>
+
+    <footer id="main-footer"></footer>
+
+    <script type="module" src="../../src/main.js"></script>
+</body>
+
+</html>

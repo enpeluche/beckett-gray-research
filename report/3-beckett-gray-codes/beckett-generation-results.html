@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+    <!-- metadata -->
+
+    <meta charset="UTF-8">
+    <meta name="robots" content="index, follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Resultats sur la generation de codes de Beckett-Gray</title>
+
+    <meta name="description" content="">
+
+    <meta name="keywords" content="">
+
+    <meta name="author" content="Lucas Petit">
+
+    <link rel="icon" href="/assets/img/logo/logo.ico" type="image/x-icon">
+
+    <!-- for rendering latex -->
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+
+    <!-- JS -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+    <!-- ALL STYLESHEET -->
+
+    <link rel="stylesheet" href="../../src/main.css">
+</head>
+
+<body>
+    <header id="main-header-hihi">
+        <nav>
+            <ul>
+                <li>
+                    <a href="../../">
+                        <svg style="padding-right: 0.5rem" class="flip-horizontal icon backwardArrow"
+                            viewBox="0 0 24 24">
+                            <path d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"></path>
+                        </svg>
+                        Réduction de réseaux
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div id="toc-wrapper"></div>
+
+        <div id="article">
+            <h3>Résultats sur la génération de codes de Beckett-Gray</h3>
+
+            <div class="paragraph">
+                On arrive à générer les $1920$ codes de Beckett Gray $n=5$ en $0.428$ secondes sur nos machines en
+                utilisant le code C\texttt{++}. On obtient un temps d'exécution $6.6$ fois plus rapide que sans
+                heuristique. Ce facteur ne fera que augmenter plus $n$ sera grand en raison de la nature de cet
+                algorithme de génération. Si l'on compare avec une implémentation en Python équivalente, on obtient un
+                temps d'exécution de $14.5$ secondes, d'où notre volonté d'utiliser C\texttt{++} avec ses options de
+                compilation.
+
+            </div>
+
+            <figure>
+                <div class="fig-container">
+                    <img src="images/NbAppel.png" alt="" srcset="">
+                </div>
+
+                <figcaption>
+                    Nombre d'appels par profondeur dans la génération de tous les Beckett-Gray $n=5$
+                </figcaption>
+            </figure>
+
+            <div class="paragraph">
+                On observe pour $n=5$ que la profondeur où le plus de noeuds dans l'arbre de recherche sont générés
+                (correspondant aux nombres d'appels à une certaine profondeur de la pile de récursion), a tendance à se
+                faire vers le milieu de l'arbre($n =16$). En effet, plus on va profondément dans l'arbre, plus on génère
+                de branches. Pour un noeud on peut trouver au pire $n$ fils, donnant une complexité dans le pire des cas
+                de l'ordre de $O(n^{2^n})$. Mais vers le milieu de l'arbre on commence à avoir un choix de sommet plus
+                limité, renforçant les contraintes de génération du code, faisant baisser le nombre d'appels de
+                fonctions à ces profondeurs.
+            </div>
+
+            <div class="paragraph">
+                Pour $n=6$, en faisait tourner l'algorithme pendant environs $5$ jours, on obtient \num{1 765 776} codes
+                de Beckett-Gray.
+            </div>
+
+            <div class="paragraph">
+                Nous avons réussi à générer un code de Beckett-Gray pour $n=7$. Cela à pris un total de 17 heures 41
+                minutes et 10 secondes. Comparé aux 80 heures d'exécution sur $25$ processeurs réalisés selon <a
+                    class="ref-cooke-2016"></a> c'est une nette amélioration.
+            </div>
+
+            <figure>
+                <div class="fig-container">
+                    <img src="images/BG7.png" alt="" srcset="">
+                </div>
+
+                <figcaption>Représentation graphique du premier code de Beckett-Gray $n=7$.</figcaption>
+            </figure>
+
+            <div class="paragraph">
+                Par la propriété d'équivalence sous inversion, on obtient aussi un deuxième code de Beckett-Gray. Le
+                code généré peut se lire sur le graphique dans le sens des aiguilles d'une montre, et le code équivalent
+                dans le sens trigonométrique.
+            </div>
+
+            <div class="paragraph">
+                Pour $n=8$, le mieux que nous ayons trouvé en $27$ heures et $10$ min est un code partiel avec les $234$
+                premiers bits générés.
+            </div>
+
+            <figure>
+                <div class="fig-container">
+                    <img src="images/n=8.png" alt="" srcset="">
+                </div>
+
+                <figcaption>Représentation graphique du code de Beckett-Gray $n=8$ partiel.</figcaption>
+            </figure>
+
+            <div class="paragraph">
+                Pour $n=7$, l'algorithme trouvait en moins d'une seconde des codes de Beckett-Gray partiels pour une
+                profondeur de $124$, c'était pour obtenir une plus grande profondeur que l'on prenait beaucoup de temps.
+                \'{E}tant donné le temps d'exécution déjà très grand pour déjà atteindre $234$, cela va prendre encore
+                plus de temps pour trouver le premier $n=8$, on ne peut donc pas en trouver sur nos propre machines pour
+                cette raison.
+            </div>
+
+            <figure>
+                <div class="fig-container">
+                    <img src="images/Temps n=7.png" alt="" srcset="">
+                    <img src="images/Temps n=8.png" alt="" srcset="">
+                </div>
+
+                <figcaption>Temps d'exécution pour générer un code de Beckett-Gray partiel</figcaption>
+            </figure>
+        </div>
+
+    </main>
+
+    <footer id="main-footer"></footer>
+
+    <script type="module" src="../../src/main.js"></script>
+</body>
+
+</html>

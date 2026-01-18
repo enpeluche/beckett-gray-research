@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+    <!-- metadata -->
+
+    <meta charset="UTF-8">
+    <meta name="robots" content="index, follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Equivalence sous reversion</title>
+
+    <meta name="description" content="">
+
+    <meta name="keywords" content="">
+
+    <meta name="author" content="Lucas Petit">
+
+    <link rel="icon" href="/assets/img/logo/logo.ico" type="image/x-icon">
+
+    <!-- for rendering latex -->
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+
+    <!-- JS -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+    <!-- ALL STYLESHEET -->
+
+    <link rel="stylesheet" href="../../src/main.css">
+</head>
+
+<body>
+    <header id="main-header-hihi">
+        <nav>
+            <ul>
+                <li>
+                    <a href="../../">
+                        <svg style="padding-right: 0.5rem" class="flip-horizontal icon backwardArrow"
+                            viewBox="0 0 24 24">
+                            <path d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"></path>
+                        </svg>
+                        Réduction de réseaux
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div id="toc-wrapper"></div>
+
+        <div id="article">
+            <h3>Équivalence sous réversion</h3>
+
+            <div class="definition">
+                La réversion d'un cycle hamiltonien $c:=v_1, \cdots v_k$ est $rev(c):=v_k, \cdots, v_1$.
+            </div>
+
+            <div class="proposition">
+                Si $c$ est un cycle hamiltonien, $rev(c)$ est un cycle hamiltonien.
+            </div>
+
+            <div class="paragraph">
+                $rev$ est une bijection de l'ensemble des cycles hamiltoniens, on note $c_1 \simeq_r c_2$ si $c_1 =
+                rev(c_2)$. On notera que $rev$ est une involution.
+            </div>
+
+            <div class="proposition">
+                $\simeq_r$ n'est pas une relation d'équivalence, mais elle possède des propriétés intéressantes :
+
+                <ul>
+                    <li>si $c_1 \simeq_r c_2$ alors $c_2 \simeq_r c_1$.</li>
+                    <li>$c \not\simeq c$.</li>
+                    <li>si $c_1 \simeq_r c_2$ et $c_2 \simeq_r c_3$ alors $c_1 = c_3$.</li>
+                </ul>
+            </div>
+
+
+            <div class="proof">
+                La preuve est un jeu de manipulation de la notation $rev$
+
+                <ul>
+                    <li>
+                        si $c_1 \simeq_r c_2$ alors $c_1 = rev(c_2)$ et donc $rev(c_1) = rev(rev(c_2))$ et donc
+                        $rev(c_1) = c_2$ finalement $c_2 \simeq_r c_1$.
+                    </li>
+
+                    <li>
+                        $c \neq rev(c)$ dès que le cycles est de longueur strictement supérieur à $3$ et que les sommets
+                        sont tous distincts.
+                    </li>
+
+                    <li>
+                        si $c_1 \simeq_r c_2$ et $c_2 \simeq_r c_3$ alors $c_1 = rev(c_2)$ et $c_2 = rev(c_3)$ alors
+                        $c_1 = rev(rev(c_3))$ et $c_1=c_3$
+                    </li>
+                </ul>
+            </div>
+
+            <div class="paragraph">
+                La fonction de réversion est une bijection, on identifie $c$ et sa réversion $rev(c)$ si ils sont la
+                réversion l'un de l'autre et on note $rev_c = \{c, rev(c)\}$.
+
+            </div>
+
+            <div class="proposition">
+                Pour tout cycle hamiltonien : $\# rev_c = 2$.
+            </div>
+
+            <div class="paragraph">
+                Si on trouve un cycle hamiltonien sur $\mathcal{Q}_n$ on peut trouver $2 \times n!$ autres cycles
+                hamiltonien. Cela nous donne une borne inférieur du nombre de code de cycles hamiltonien dans
+                $\mathcal{Q}_n$.
+            </div>
+
+            <div class="paragraph">
+                Avec cette correspondance entre les cycles et les codes de Gray, on obtient la notion d'isomorphisme de
+                code de Gray et de réversion de code de Gray.
+            </div>
+        </div>
+
+    </main>
+
+    <footer id="main-footer"></footer>
+
+    <script type="module" src="../../src/main.js"></script>
+</body>
+
+</html>

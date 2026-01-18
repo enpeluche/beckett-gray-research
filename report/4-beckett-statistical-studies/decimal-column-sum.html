@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+    <!-- metadata -->
+
+    <meta charset="UTF-8">
+    <meta name="robots" content="index, follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Somme des colonnes de la representation decimale des codes de Beckett-Gray</title>
+
+    <meta name="description" content="">
+
+    <meta name="keywords" content="">
+
+    <meta name="author" content="Lucas Petit">
+
+    <link rel="icon" href="/assets/img/logo/logo.ico" type="image/x-icon">
+
+    <!-- for rendering latex -->
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+
+    <!-- JS -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+    <!-- ALL STYLESHEET -->
+
+    <link rel="stylesheet" href="../../src/main.css">
+</head>
+
+<body>
+    <header id="main-header-hihi">
+        <nav>
+            <ul>
+                <li>
+                    <a href="../../">
+                        <svg style="padding-right: 0.5rem" class="flip-horizontal icon backwardArrow"
+                            viewBox="0 0 24 24">
+                            <path d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"></path>
+                        </svg>
+                        Réduction de réseaux
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div id="toc-wrapper"></div>
+
+        <div id="article">
+            <h3>Somme des colonnes de la représentation décimale des codes de Beckett-Gray</h3>
+
+            <div class="paragraph">
+                Les deux tableaux suivant présentent la somme des colonnes des valeurs décimales des codes de
+                Beckett-Gray pour $n=5$ et $n=6$, respectivement. Il est à noter que le deuxième tableau est incomplet,
+                car seuls 1856008 codes ont été générés au moment de la création du graphique sur un total \num{136 571
+                040}. Cette visualisation pourra être améliorée à l'avenir avec une génération continue de codes. On
+                observe un motif symétrique sur les deux graphiques, illustrant l'équivalence sous réversion des codes
+                de Beckett-Gray. De plus, on remarque deux 'pics' aux extrémités des graphiques, où la somme des
+                colonnes croît initialement puis diminue, créant une sorte de plateau entre les deux. Ce caractère très
+                symétrique et régulier semble être créé par les isomorphismes des codes de Beckett-Gray.
+            </div>
+
+            <figure>
+                <div class="fig-container">
+                    <img src="https://raw.githubusercontent.com/Crowreed/beckett-gray-research/main/report/4-beckett-statistical-studies/sum_col_BGC_5.png"
+                        alt="">
+
+                    <img src="https://raw.githubusercontent.com/Crowreed/beckett-gray-research/main/report/4-beckett-statistical-studies/sum_col_BGC_6.png"
+                        alt="">
+                </div>
+
+                <figcaption>
+                    Somme des colonnes de la représentation décimale des codes de Beckett-Gray pour $n = 5$ et $n= 6$
+                </figcaption>
+            </figure>
+        </div>
+
+    </main>
+
+    <footer id="main-footer"></footer>
+
+    <script type="module" src="../../src/main.js"></script>
+</body>
+
+</html>

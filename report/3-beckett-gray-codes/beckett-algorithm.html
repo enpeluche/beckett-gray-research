@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+    <!-- metadata -->
+
+    <meta charset="UTF-8">
+    <meta name="robots" content="index, follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Algorithme</title>
+
+    <meta name="description" content="">
+
+    <meta name="keywords" content="">
+
+    <meta name="author" content="Lucas Petit">
+
+    <link rel="icon" href="/assets/img/logo/logo.ico" type="image/x-icon">
+
+    <!-- for rendering latex -->
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+
+    <!-- JS -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+    <!-- ALL STYLESHEET -->
+
+    <link rel="stylesheet" href="../../src/main.css">
+</head>
+
+<body>
+    <header id="main-header-hihi">
+        <nav>
+            <ul>
+                <li>
+                    <a href="../../">
+                        <svg style="padding-right: 0.5rem" class="flip-horizontal icon backwardArrow"
+                            viewBox="0 0 24 24">
+                            <path d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"></path>
+                        </svg>
+                        Réduction de réseaux
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div id="toc-wrapper"></div>
+
+        <div id="article">
+            <h3>Algorithme</h3>
+
+            <div class="paragraph">
+                Pour écrire un algorithme qui va générer des codes de Beckett-Gray, on commence avec l'algorithme
+                suivant écrit en pseudo-code que l'on va légèrement modifier par la suite.
+            </div>
+
+            <div class="paragraph">
+                La fonction GC est une implémentation de génération des codes de Gray. Elle fonctionne de manière
+                récursive en itérant sur chaque position possible du mot binaire pour inverser un bit dans la séquence
+                en cours de génération. Lorsqu'une inversion est possible, elle est effectuée, puis la fonction est
+                appelée de manière récursive pour générer les autres codes de Gray. Lorsque la longueur de la séquence
+                atteint $2^n$, la récursion s'arrête et le code de Gray est affiché.
+            </div>
+
+            <div class="paragraph">
+                Cette approche récursive permet de générer de manière exhaustive tous les codes de Gray possibles.
+            </div>
+
+            <div class="algorithm">
+                <h2>GC</h2>
+
+                <div class="meta">
+                    <div class="in">
+                        procedure (s, x, maxpos :integer)
+                    </div>
+                    local i
+                    <div class="conditional">
+                        <div class="if">
+                            if s >= 2^n then
+                            Print()
+                        </div>
+                        <div class="else">
+                            <div class="for">
+                                for i = 0 to Min(n-1, maxpos) do
+                                x = Flip(x, i)
+                                if avail[x] then
+                                avail[x] = false
+                                bgc[s] = x
+                                GC(s + 1, x, Max(maxpos, i))
+                                avail[x] = true
+                                x = Flip(x, i)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="paragraph">
+                <ul>
+                    <li>
+                        <strong>bgc</strong> : un tableau global pour stocker la liste des codes Gray sur des chaînes
+                        binaires de longueur $n$.
+                    </li>
+                    <li>
+                        <strong>avail</strong> : un tableau booléen global pour suivre quelles chaînes sont encore
+                        disponibles.
+                    </li>
+                    <li>
+                        <strong>x</strong> : la valeur entière de la chaîne actuellement à la fin de la liste.
+                    </li>
+                    <li>
+                        <strong>s</strong> : la longueur de la liste partielle.
+                    </li>
+                    <li>
+                        <strong>maxpos</strong> : la position de bit la plus élevée qui a été définie à $1$ à un moment
+                        donné.
+                    </li>
+                    <li>
+                        <strong>Flip(x, i)</strong> : une fonction qui retourne la valeur entière obtenue en inversant
+                        le $i$-ème bit dans la représentation binaire de $x$.
+                    </li>
+                    <li>
+                        <strong>Print()</strong> : une fonction qui imprime le code de Gray bgc.
+                    </li>
+                </ul>
+            </div>
+
+            <div class="paragraph">
+                Pour initialiser l'algorithme, nous fixons $avail[i] = true$ pour $i \in\{1, \cdots, n-1\}$,
+                et $avail[0] = false$, fixons $bgc[0] = 0$, puis appelons $GC(1, 0, 0)$.
+            </div>
+
+            <div class="paragraph">
+                L'algorithme générera tous les codes Gray sur des chaînes binaires de longueur $n$. Pour générer
+                uniquement les codes Gray cycliques sur des chaînes binaires de longueur $n$, la fonction Print
+                est appelée uniquement si la dernière chaîne dans la liste est une puissance de $2$ (elle diffère d'un
+                bit de $0$).
+            </div>
+        </div>
+
+    </main>
+
+    <footer id="main-footer"></footer>
+
+    <script type="module" src="../../src/main.js"></script>
+</body>
+
+</html>
