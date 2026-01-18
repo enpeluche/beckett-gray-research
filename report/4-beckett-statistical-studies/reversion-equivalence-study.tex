@@ -1,0 +1,41 @@
+
+
+\subsection{Étude de l'équivalence sous réversion}
+Il est pertinent d'étudier l'indice d'un code généré par rapport à l'indice de sa réversion, et de représenter ces indices sur
+un graphique, comme illustré ci-dessous. Un point (x,y) est dans ce graphique si le code $c_1$ d'indice $x$ est la réversion du
+code $c_2$ d'indice $y$.
+
+\begin{table}[h!]
+    \centering
+    \caption{Indices des codes de Beckett-Gray et de leur réversion pour $n=5$}
+    \begin{tabular}{cc}
+        \includegraphics[width=0.75\textwidth]{woooo.png} \\
+    \end{tabular}
+\end{table}
+\FloatBarrier
+
+Cette figure est remarquable, on remarque plusieurs choses d'un seul coup d'oeil :
+\begin{itemize}
+    \item \underline{Distribution des Points} : Les points sont répartis de manière relativement uniforme, mais il existe des zones
+          de plus forte densité. Certaines zones présentent une structure plus claire, ce qui peut indiquer des motifs récurrents dans les
+          indices des codes inversés.
+    \item \underline{Zones de Concentration} : On observe des bandes horizontales et verticales où les points sont plus concentrés,
+          suggérant que certains indices de codes inversés apparaissent fréquemment en relation avec des indices spécifiques de codes
+          originaux.
+    \item \underline{Symétrie et Répartition} : Il y a une symétrie au niveau des structures apparente autour de la diagonale principale
+          (qui va de (0,0) à (1920,1920)).
+    \item \underline{Gaps et espaces vides} : Il y a des zones vides où aucun point n'est présent. On l'interprète comme ceci : parmi
+          les $384 = 1920/5$ premiers codes aucune réversion n'est présente dans les $384$ premiers, et ainsi de suite. Ces gaps peuvent être
+          dus à la nature des transformations de Beckett-Gray et de leurs inversions, qui ne couvrent pas tous les indices de manière uniforme.
+          Ces gaps sont au nombre de $5$, cela laisse suggérer que pour $n=6$ ces gaps seraient au nombre de $6$. Ces gaps interviennent tous
+          les $384 = 1920/5$ codes, cela laisse suggérer que ces gaps interviendraient tous les $\num{22761840} = \num{136571040}/6$ codes. A
+          l'heure actuelle de l'écriture de ce paragraphe, Lucas a généré $5$ millions de codes de Beckett-Gray pour $n=6$, ne pouvant pour
+          l'instant pas vérifier la présence d'un gap ou non, mais en calculant, on ne trouve aucune réversion, ce qui laisse suggérer que
+          cette hypothèse est vraie. On remarque que les $384$ derniers codes sont donc inutiles à générer, comme ils sont des réversions des
+          premiers, on pourrait donc couper l'algorithme $384$ codes avant la fin, et cela laisse suggérer qu'on pourrait couper \num{22761840}
+          codes avant la fin pour $n=6$, ce qui peut être une énorme amélioration.
+\end{itemize}
+
+En conclusion le graphique montre que les indices des codes de Beckett-Gray et leurs reversions ont une relation complexe. Les motifs de
+concentration et les zones vides suggèrent que certaines inversions sont plus courantes que d'autres, et que l'inversion n'est pas une
+transformation simple des indices.

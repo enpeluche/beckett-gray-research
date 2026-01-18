@@ -1,0 +1,122 @@
+
+\subsection{Heuristiques}
+On détail ici quelques heuristiques utilisée afin de générer plus rapidement des codes de Beckett-Gray. On peut appliquer certaines de ces heuristiques à d'autres types de codes de Gray. L'importance des heuristiques dans ce cas est capitale car elle permet d'accélérer les générations de codes de Beckett-Gray jusqu'à un facteur $60$, ou même $9500$ pour $n=7$ selon \bite{BGC}. \newline
+
+Les deux premières heuristiques considèrent la propriété hamiltonienne des codes Beckett-Gray cycliques sur des chaînes binaires, et la troisième heuristique considère l'équivalence sous inversion.
+
+\begin{definition}
+    Un chemin simple est un chemin ne passant pas deux fois par un même arc, c'est-à-dire dont tous les arcs sont distincts.
+\end{definition}
+
+Soit $P = {v_0, v_1, v_2,\cdots,v_k}$ un chemin simple dans $\mathcal{Q}_n$ où $k < 2^n$. Un tel chemin peut correspondre à un préfixe de certains codes de Gray sur des chaînes binaires de longueur $n$.
+
+Considérons maintenant le sous-graphe induit $G_P$ qui est obtenu à partir de $\mathcal{Q}_n$ en supprimant tous les sommets de $P$ sauf $v_0$ et leurs arêtes incidentes.
+
+Étant donné qu'un cycle hamiltonien doit visiter tous les sommets et revenir au sommet de départ, si $G_P$ n'est pas connexe, alors il n'existera aucun cycle hamiltonien commençant par $P$. \\
+
+Une façon de tester cette connectivité est d'appliquer une recherche en largeur à chaque fois que nous ajoutons un sommet au chemin. Cependant, étant donné qu'il y a $n2^{n-1}$ arêtes dans $\mathcal{Q}_n$, ce test prendrait un temps $O(n 2^n)$, ce qui ajoute un gros surcoût. Au lieu de cela, nous appliquons deux heuristiques qui testent la connectivité partielle. La première heuristique se concentre sur la recherche des sommets pendants dans $G_P$ et peut être implémentée en temps $O(n)$ par appel récursif. La deuxième heuristique applique une propriété eulérienne sur un graphe connexe et peut être implémentée en $O(1)$ par appel récursif.
+
+\subsubsection{Heuristique : Sommets pendant}
+
+\begin{definition}
+    Un sommet pendant est un sommet ayant un degré de $1$.
+\end{definition}
+
+À l'exception de $v_0$, s'il y a des sommets pendants dans $G_P$, alors il n'y aura aucun moyen d'étendre $P$ à un cycle hamiltonien, sauf si le sommet pendant en question est un voisin de $v_k$. Pour trouver efficacement les sommets pendants dans $G_P$, nous maintenons un compteur pour le nombre de voisins disponibles pour chaque sommet. Lorsqu'un sommet $v_i$ est ajouté à $P$, nous décrémentons cette valeur pour chacun de ses voisins. Si l'un de ses voisins $u$ est décrémenté à $1$, cela signifie que $u$ doit être le prochain sommet dans le chemin car il nécessite un bord pour atteindre le prochain sommet dans le chemin. Si deux voisins ou plus sont décrémentés à $1$, alors il n'y aura pas de cycle hamiltonien commençant par $P$. L'exception à cela est le sommet $v_0$ qui n'est ajouté qu'à la fin. Si son degré est réduit à $0$, alors $P$ ne peut pas être étendu à un cycle hamiltonien. L'implémentation de ces tests à l'algorithme du code Beckett-Gray cyclique à $n$ bits peut être facilement réalisée en temps $O(n)$ par appel récursif.
+
+\subsubsection{Heuristique : La propriété eulérienne}
+
+\begin{definition}
+    Considérons un sous-graphe de $\mathcal{Q}_n$ composé de tous les sommets de $\mathcal{Q}_n$ mais ne contenant que les arêtes d'un certain cycle Hamiltonien, que l'on note $G_{Ham}$, on définit de façon similaire $G_{Eul}$.
+\end{definition}
+
+Partitionnons l'ensemble des sommets (mots de $n+1$-bits) en $n+1$ sous-ensembles différents $V_0, V_1, \cdots ,V_n$ de telle sorte que pour tout $i$, $V_i$ contient tous les sommets avec exactement $i$ bits à $1$. Ainsi, le nombre de sommets dans chaque $V_i$ est $\binom{n}{i}$.  Les arêtes existent uniquement entre les éléments des sous-ensembles $V_i$ et $V_j$ où $|i-j|=1$.\\
+
+\begin{exemple}
+    Prenons la liste $\{000, 001, 011, 010, 110, 111, 101, 100\}$, on peut alors la partitionner en :
+    $V_0:=\{000\}$,   $V_1:=\{001, 010, 100\}$,   $V_2:=\{110, 101, 011\}$,   $V_3:=\{111\}$, qui ont respectivement $1$, $3$, $3$ et $1$ éléments. Il y a $3$ arrêtes reliant $V0$ et $V1$, $6$ arrêtes reliant $V_1$ et $V_2$, et $3$ arrêtes reliant $V_2$ et $V_3$.
+\end{exemple}
+
+Pour cette heuristique on introduit la notion du triangle de Pascal. Il s'agit d'un tableau, disposé en forme de pyramide pour plus de clarté, donc chaque cellule d'une ligne $i$ est la somme des deux cellules en haut de la ligne $i-1$, si une cellule ne possède pas deux cellules en haut de celle-ci, on la définit à $1$, comme si les cellules n'apparaissant pas étaient des $0$. \\
+
+Voici un exemple des $6$ premières lignes du triangle de Pascal.
+
+\begin{tabular}{>{$n=}l<{$\hspace{12pt}}*{13}{c}}
+    0 &   &   &   &   &    &    & 1  &    &    &   &   &   &   \\
+    1 &   &   &   &   &    & 1  &    & 1  &    &   &   &   &   \\
+    2 &   &   &   &   & 1  &    & 2  &    & 1  &   &   &   &   \\
+    3 &   &   &   & 1 &    & 3  &    & 3  &    & 1 &   &   &   \\
+    4 &   &   & 1 &   & 4  &    & 6  &    & 4  &   & 1 &   &   \\
+    5 &   & 1 &   & 5 &    & 10 &    & 10 &    & 5 &   & 1 &   \\
+    6 & 1 &   & 6 &   & 15 &    & 20 &    & 15 &   & 6 &   & 1
+\end{tabular} \\
+
+Il y a un lien entre le triangle de Pascal et les coefficients binomiaux, justifiant son apparition dans cette heuristique. La construction du triangle de Pascal est régie par la relation de Pascal :
+
+$$\binom{n}{k}=\binom{n-1}{k-1}+\binom{n-1}{k}$$
+
+où $\binom{n}{k}= \frac{n!}{k!(n-k)!}$.\\
+
+La preuve de la relation de Pascal se fait par récurrence. Il faut faire attention que quand $ k>n$, $\binom{n}{k}$ n'existe pas et vaut par convention $0$.
+
+\begin{preuve}
+    En utilisant la définition, on a :
+    $$\binom{n-1}{k-1}+\binom{n-1}{k}= \frac{(n-1)!}{(n-k)!(k-1)!} + \frac{(n-1)!}{(n-1-k)!k!}$$
+
+    En mettant au même dénominateur, il vient :
+
+    $$= \frac{k(n-1)!}{(n-k)!k!} + \frac{(n-1)!(n-k)}{(n-k)!k!}$$
+    $$= \frac{(k+n-k)(n-1)!}{(n-k)!k!} = \frac{n!}{(n-k)!k!}= \binom{n}{k}$$
+\end{preuve}
+
+Nous observons ainsi le lien entre la construction simple du triangle de Pascal et les coefficients binomiaux. Dans ce contexte, les coefficients apparaissent souvent multipliés par deux, par exemple, au lieu des coefficients $1$, $3$, $3$, $1$, nous verrons apparaître les coefficients $3$ et $6$, représentant le nombre d'arêtes possibles entre $V_1$ et $V_3$ et entre $V_3$ et $V_3$, en considérant le graphe de retournement. Revenons maintenant à l'heuristique.
+
+\begin{definition}
+    Un multi-graphe $G$ est une paire ordonnée $G := (V, E)$ où
+
+    \begin{itemize}
+        \item $V$ est un ensemble de sommets
+        \item $E$ est un multi-ensemble de couple non ordonné de sommets, ses arrêtes.
+    \end{itemize}
+\end{definition}
+
+Maintenant, considérons un multigraphe dirigé construit en fusionnant les sommets de chaque partition de $G_{Ham}$ et en
+utilisant les arêtes dirigées du cycle Hamiltonien. Dans le graphe résultant $G_{Eul}$, les sommets sont $V_0, V_1,\cdots,V_n$
+avec une arête dirigée entre $V_i$ et $V_j$ pour chaque arête dirigée entre les sommets de $V_i$ et $V_j$ dans $G_{Ham}$.
+Le cycle Hamiltonien $G_{Ham}$ correspond maintenant à un cycle Eulérien dans $G_{Eul}$.\\
+
+On rappelle cette proposition : Un code de Gray cyclique sur des chaînes binaire de longueur $n$ correspond à un cycle
+Hamiltonien dans l'hypercube $\mathcal{Q}_n$.
+
+\begin{definition}
+    Un pont d'un graphe connexe est une arête dont la suppression rend le graphe non connexe.
+\end{definition}
+
+L'idée de cette heuristique est de ne jamais traverser un pont du graphe réduit à moins qu'il n'y ait pas d'autre choix.
+Ainsi, si nous avons un chemin $P$ qui commence à partir de $V_0$ et se termine à $V_i$, nous pouvons détecter un pont
+si le nombre d'arêtes dirigées de $V_{i+1}$ à $V_i$ est égal à $1$ (le pont), mais le nombre d'arêtes de $V_{i+1}$ à $V_{i+2}$
+est supérieur à $0$.
+
+\subsubsection{Heuristique : Équivalence sous réversion.}
+En plus de la symétrie par rapport aux positions des bits, les codes de Beckett-Gray cycliques sur des chaînes binaires de
+longueur $n$ ont également une équivalence sous réversion.
+
+\begin{proposition}
+    Bien que moins évidente, la réversion d'un code de Beckett-Gray est également un code de Beckett-Gray.
+\end{proposition}
+
+\begin{preuve}
+    L'idée de la preuve, c'est que la gestion des bits à $1$ est fait par une liste FIFO, le premier bit à $1$ défini sera
+    le premier à sortir, en prenant la réversion de ce code, le dernier à entrer sera le dernier à sortir, ce qui est
+    équivalent à une liste FIFO.
+\end{preuve}
+
+Tant que $n \neq 2^j$, nous pouvons générer les codes Gray non isomorphes sur des chaînes binaires de longueur $n$ en ajoutant
+une quantité constante de travail par appel récursif en considérant la position de la chaîne $111\cdots11$. En appliquant cette
+symétrie, nous pouvons encore réduire le temps nécessaire pour générer des codes Beckett-Gray cycliques de $n$ bits non
+isomorphes. Nous n'implémenterons pas cette heuristique.
+
+\subsubsection{Heuristique : Nombre d'itérations pour changer un $1$ en $0$}
+La contrainte forte des codes de Beckett-Gray est que le seul bit pouvant passer à $0$ est le bit qui est à $1$ depuis le plus
+de temps. En conséquence, un bit ne peut pas rester à $1$ pendant trop d'itérations dans le code. Cette caractéristique permet
+de mettre une borne sur le nombre d'itérations pendant lesquelles un bit peut rester à $1$.

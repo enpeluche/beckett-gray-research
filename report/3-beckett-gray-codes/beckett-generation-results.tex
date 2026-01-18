@@ -1,0 +1,55 @@
+
+\subsection{Résultats sur la génération de codes de Beckett-Gray}
+On arrive à générer les $1920$ codes de Beckett Gray $n=5$ en $0.428$ secondes sur nos machines en utilisant le code C\texttt{++}. On obtient un temps d'exécution $6.6$ fois plus rapide que sans heuristique. Ce facteur ne fera que augmenter plus $n$ sera grand en raison de la nature de cet algorithme de génération. Si l'on compare avec une implémentation en Python équivalente, on obtient un temps d'exécution de $14.5$ secondes, d'où notre volonté d'utiliser C\texttt{++} avec ses options de compilation.
+
+\begin{table}[h!]
+    \centering
+    \caption{Nombre d'appels par profondeur dans la génération de tous les Beckett-Gray $n=5$}
+    \vspace{0.5cm}
+    \includegraphics[scale=0.4]{NbAppel.png}
+\end{table}
+\FloatBarrier
+
+On observe pour $n=5$ que la profondeur où le plus de noeuds dans l'arbre de recherche sont générés (correspondant aux nombres d'appels à une certaine profondeur de la pile de récursion), a tendance à se faire vers le milieu de l'arbre($n =16$). En effet, plus on va profondément dans l'arbre, plus on génère de branches. Pour un noeud on peut trouver au pire $n$ fils, donnant une complexité dans le pire des cas de l'ordre de $O(n^{2^n})$. Mais vers le milieu de l'arbre on commence à avoir un choix de sommet plus limité, renforçant les contraintes de génération du code, faisant baisser le nombre d'appels de fonctions à ces profondeurs.\\
+
+Pour $n=6$, en faisait tourner l'algorithme pendant environs $5$ jours, on obtient \num{1 765 776} codes de Beckett-Gray.\\
+
+Nous avons réussi à générer un code de Beckett-Gray pour $n=7$. Cela à pris un total de 17 heures 41 minutes et 10 secondes. Comparé aux 80 heures d'exécution sur $25$ processeurs réalisés selon \cite{BGC} c'est une nette amélioration.
+
+\begin{table}[h!]
+    \centering
+    \caption{Représentation graphique du premier code de Beckett-Gray $n=7$.}
+    \vspace{0.5cm}
+    \includegraphics[scale=0.15]{BG7.png}
+\end{table}
+\FloatBarrier
+
+Par la propriété d'équivalence sous inversion, on obtient aussi un deuxième code de Beckett-Gray. Le code généré peut se
+lire sur le graphique dans le sens des aiguilles d'une montre, et le code équivalent dans le sens trigonométrique.\\
+
+Pour $n=8$, le mieux que nous ayons trouvé en $27$ heures et $10$ min est un code partiel avec les $234$ premiers bits générés.
+
+\begin{table}[h!]
+    \centering
+    \caption{Représentation graphique du code de Beckett-Gray $n=8$ partiel.}
+    \vspace{0.5cm}
+    \includegraphics[scale=0.15]{n=8.png}
+\end{table}
+\FloatBarrier
+
+Pour $n=7$, l'algorithme trouvait en moins d'une seconde des codes de Beckett-Gray partiels pour une profondeur de $124$,
+c'était pour obtenir une plus grande profondeur que l'on prenait beaucoup de temps. \'{E}tant donné le temps d'exécution
+déjà très grand pour déjà atteindre $234$, cela va prendre encore plus de temps pour trouver le premier $n=8$, on ne peut
+donc pas en trouver sur nos propre machines pour cette raison.
+
+\begin{table}[h!]
+    \centering
+    \caption{Temps d'exécution pour générer un code de Beckett-Gray partiel}
+    \begin{tabular}{cc}
+        \includegraphics[width=0.6\textwidth]{Temps n=7.png} \\
+        \includegraphics[width=0.6\textwidth]{Temps n=8.png}
+    \end{tabular}
+\end{table}
+\FloatBarrier
+.
+\newpage

@@ -1,0 +1,81 @@
+
+\subsection{Cycles isomorphes dans l'hypercube vu comme un graphe de retournement}
+
+Une autre notion que nous allons examiner sur l'hypercube $\mathcal{Q}_n$ en le considérant comme un graphe de retournement,
+concerne les cycles isomorphes. La notion de cycles isomorphes nous amène à la notion de code de Gray isomorphes, c'est donc
+une notion très utile pour étudier la structure des codes de Gray. Dans toute la suite on suppose $n > 3$. On définit
+préalablement ce qu'on entends par l'égalité de deux cycles. Deux cycles $c_1$ et $c_2$ sont dis égaux si ils parcourent les
+mêmes sommets dans le même ordre.
+
+\begin{definition}
+    Une permutation de l'ensemble $\{1, \cdots, n\}$ est une bijection de $\{1, \cdots, n\}$ dans $\{1, \cdots, n\}$.
+\end{definition}
+
+\begin{definition}
+    On appelle groupe symétrique d’indice $n$, noté $\mathcal{G}_n$ l’ensemble des permutations de l’ensemble $\{1, 2, 3, \cdots , n\}$.
+\end{definition}
+
+\begin{definition}
+    Une permutation circulaire $\sigma$ de $\{a_1, \cdots, a_k\}$ est définie par $\sigma(a_j) = a_{j+1}$ pour tout
+    $j \in \{1, \cdots,  n-1\}$ et $\sigma(i_n) = \sigma (a_1)$
+\end{definition}
+
+Du point de vue informatique, on prend le dernier élément d'une liste, qu'on rajoute au début de la liste. L'inverse d'une permutation
+circulaire consiste à prendre le premier élément de la liste et le mettre à la fin de cette liste. C'est une involution.
+
+\begin{proposition}
+    On a $|\mathcal{G}_n|=n!$.
+\end{proposition}
+
+\begin{definition}
+    On dit que deux codes de Gray $c_1=(v_1, \cdots, v_n)$ et $c_2=(w_1, \cdots, w_n)$ sont isomorphes si il existe
+    $\sigma \in \mathcal{G}_n$ tel que :
+
+    Pour tout $i \in \{1, \cdots, n\}$, $v_i=\sigma(w_i)$ où $\sigma (w_i)$ désigne la permutation des coordonnées de $w_i$.
+\end{definition}
+
+On note $c_1 \simeq c_2$ si $c_1$ est isomorphe à $c_2$.
+
+\begin{proposition}
+    $\simeq$ est une relation d'équivalence.
+\end{proposition}
+
+\begin{preuve}
+    Il faut montrer que $\simeq$ est réflexive, symétrique et transitive.
+    \begin{itemize}
+        \item $\simeq$ est \underline{réflexive} : $$c_1 \simeq c_1$$ en revenant à la définition de cycles isomorphes et
+              prenant la permutation identité.
+        \item $\simeq$ est \underline{symétrique} : si $c_1 \simeq c_2$ alors $c_2 \simeq c_1$ en revenant à la définition
+              de cycles isomorphes et prenant la permutation inverse.
+        \item $\simeq$ est \underline{transitive} : si $c_1 \simeq c_2$ et $c_2 \simeq c_3$ alors $c_1 \simeq c_3$ en revenant
+              à la définition de cycles isomorphes et en prenant la composition des deux permutations.
+    \end{itemize}
+\end{preuve}
+
+On peut donc parler de classes d'équivalences de cycles isomorphes que l'on notera $eq_c := \{c ~|~ c \simeq a\}$, le choix
+d'un représentant $c$ est arbitraire.
+
+\begin{proposition}
+    Dans $\mathcal{Q}_n$, $\# eq_c = n!$.
+\end{proposition}
+
+Si on trouve un cycle hamiltonien sur $\mathcal{Q}_n$ on peut en trouver $n!$ autres cycles hamiltonien. Cela nous donne une
+borne inférieur du nombre de code de cycles hamiltonien dans $\mathcal{Q}_n$.
+
+\begin{proposition}
+    Il y a $\binom{n}{i}$ mots possibles de longueur $n$ sur l'alphabet $\{0,1\}$ qui possède $i$ fois la lettre $1$.
+\end{proposition}
+
+On retrouve la formule $2^n= \binom{n}{i} + \cdots + \binom{n}{n}$.
+
+\begin{proposition}
+    Une permutation d'un mot binaire qui possède $i$ bits à $1$ possède toujours $i$ bits à $1$.
+\end{proposition}
+
+On a donc une façon de détecter si deux cycles ne sont pas isomorphes en comparant le nombre de bit à $1$ dans leur éléments successifs.
+
+\begin{proposition}
+    Il n'y a que deux mots de longueur $n$ qui sont fixés par toutes les permutations de $\mathcal{G}_n$ : le mot $1^n$ et le mot $0^n$.
+\end{proposition}
+
+On peut l'interpréter comme le fait que certains sommets du graphe sont une étape incontournable pour tout isomorphisme d'un code de Gray.

@@ -1,0 +1,46 @@
+
+\subsection{Études des isomorphismes}
+Une chose à remarquer en regardant les indices des $8$ codes non isomorphes générés, ceux-ci se trouvent tous parmi
+les premiers codes générés. Cela pourrait indiquer une généralisation possible : l'algorithme pourrait être interrompu
+assez tôt, les derniers codes pouvant être obtenus par isomorphisme. \\
+
+Il est pertinent d'étudier l'indice d'un code généré par rapport à l'indice de ses codes isomorphes , et de représenter ces
+indices sur un graphique, comme illustré ci-dessous. Un point (x,y) est dans ce graphique si le code $c_1$ d'indice $x$ est
+isomorphe au code $c_2$ d'indice $y$.\\
+
+Il est à noter que ce tableau s'est fait avec les $960$ codes à qui on a enlevé leur réversion, le graphique peut être altéré.
+\begin{table}[h!]
+    \centering
+    \caption{Temps d'exécution pour générer un code de Beckett-Gray partiel}
+    \begin{tabular}{cc}
+        \includegraphics[width=0.75\textwidth]{wouah.png} \\
+    \end{tabular}
+\end{table}
+\FloatBarrier
+
+On remarque encore une fois tout de suite la caractère remarquable de cette figure, dans les $96$ premiers codes générés, $8$
+codes non isomorphes sont présent, nous n'avons aucune idée de pourquoi cette valeur de $96 = 1920/20$, mais on pourrait penser
+que les \num{94841} codes de Beckett-Gray non isomorphes pour $n=6$ soient générés assez rapidement, en testant sur les \num{1000000}
+premiers codes on trouve environs \num{20000} codes non isomorphes. On pourrait alors créer une heuristique qui coupe très rapidement
+l'algorithme, évitant de générer tous les codes, pouvant être obtenus par isomorphisme, puis par réversion, bien entendu, tout cela
+ne reste que des conjectures.
+
+\begin{itemize}
+    \item \underline{Motifs en Damier} : Le graphique présente un motif en damier distinct, avec des carrés de points bleus alternant
+          avec des zones vides. Cela indique que les isomorphismes se produisent régulièrement entre certains groupes de codes. Si on
+          considère le nombre de zones bleus, on trouve 10 carrés bleu en ordonné et 15 en abscisse.
+    \item \underline{Distribution des Points} : Les points sont densément regroupés en blocs. Chaque bloc représente un ensemble de
+          codes de Beckett-Gray qui sont mutuellement isomorphes. Ces blocs sont séparés par des espaces vides, suggérant que les isomorphismes
+          sont contenus au sein de groupes spécifiques de codes et ne se produisent pas entre ces groupes.
+    \item \underline{Taille des Blocs} : Les blocs ont une taille variable, mais ils apparaissent généralement sous forme de carrés ou
+          de rectangles réguliers. Cela indique une structure sous-jacente dans la manière dont les codes de Beckett-Gray sont isomorphes les
+          uns aux autres.
+    \item \underline{Interprétation des Blocs} : Les blocs représentant les isomorphismes montrent que pour un certain indice de code
+          de Beckett-Gray, il existe un ensemble défini d'autres indices avec lesquels il est isomorphe. Ces ensembles semblent être bien
+          délimités et non aléatoires.
+    \item \underline{Concentration de points} : Vers la fin du graphique, il semble y avoir une densité accrue de rectangles.
+\end{itemize}
+
+En conclusion le graphique démontre que les isomorphismes entre les codes de Beckett-Gray ne sont pas distribués de manière aléatoire
+mais suivent une structure régulière et répétitive. Les motifs en damier et les blocs de points bleus révèlent que les isomorphismes se
+produisent fréquemment au sein de groupes spécifiques de codes.\\

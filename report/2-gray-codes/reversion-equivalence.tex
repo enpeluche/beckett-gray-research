@@ -1,0 +1,44 @@
+
+\subsection{Équivalence sous réversion}
+
+\begin{definition}
+    La réversion d'un cycle hamiltonien $c:=v_1, \cdots v_k$ est $rev(c):=v_k, \cdots, v_1$.
+\end{definition}
+
+\begin{proposition}
+    Si $c$ est un cycle hamiltonien, $rev(c)$ est un cycle hamiltonien.
+\end{proposition}
+
+$rev$ est une bijection de l'ensemble des cycles hamiltoniens, on note $c_1 \simeq_r c_2$ si $c_1 = rev(c_2)$.
+On notera que $rev$ est une involution.
+
+\begin{proposition} $\simeq_r$ n'est pas une relation d'équivalence, mais elle possède des propriétés intéressantes :
+    \begin{itemize}
+        \item si $c_1 \simeq_r c_2$ alors $c_2 \simeq_r c_1$.
+        \item $c \not\simeq c$.
+        \item si $c_1 \simeq_r c_2$ et $c_2 \simeq_r c_3$ alors $c_1 = c_3$.
+    \end{itemize}
+\end{proposition}
+
+\begin{preuve}
+    La preuve est un jeu de manipulation de la notation $rev$
+    \begin{itemize}
+        \item si $c_1 \simeq_r c_2$ alors $c_1 = rev(c_2)$ et donc $rev(c_1) = rev(rev(c_2))$ et donc $rev(c_1) = c_2$
+              finalement $c_2 \simeq_r c_1$.
+        \item $c \neq rev(c)$ dès que le cycles est de longueur strictement supérieur à $3$ et que les sommets sont tous distincts.
+        \item si $c_1 \simeq_r c_2$ et $c_2 \simeq_r c_3$ alors $c_1 = rev(c_2)$ et $c_2 = rev(c_3)$ alors $c_1 = rev(rev(c_3))$ et $c_1=c_3$
+    \end{itemize}
+\end{preuve}
+
+La fonction de réversion est une bijection, on identifie $c$ et sa réversion $rev(c)$ si ils sont la réversion l'un de
+l'autre et on note $rev_c = \{c, rev(c)\}$.
+
+\begin{proposition}
+    Pour tout cycle hamiltonien : $\# rev_c = 2$.
+\end{proposition}
+
+Si on trouve un cycle hamiltonien sur $\mathcal{Q}_n$ on peut trouver $2 \times n!$ autres cycles hamiltonien. Cela nous donne
+une borne inférieur du nombre de code de cycles hamiltonien dans $\mathcal{Q}_n$.
+
+Avec cette correspondance entre les cycles et les codes de Gray, on obtient la notion d'isomorphisme de code de Gray et de réversion
+de code de Gray.

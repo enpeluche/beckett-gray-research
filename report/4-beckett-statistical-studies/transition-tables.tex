@@ -1,0 +1,42 @@
+
+\subsection{Tables de transitions}
+Une table de transition est une matrice $n\times n$ où $n$ est le nombre de valeurs. Chaque cellule $(i,j)$ de la matrice
+représente la probabilité que l'entier $i$ soit suivi par l'entier $j$.\\
+
+Les trois figures suivantes représentent les tables de transition des codes de Beckett-Gray pour respectivement $n=5$, $n=6$
+et $n=7$. Ces tables de transition sont identiques à celles des codes de Gray.\\
+
+\begin{table}[h!]
+    \centering
+    \caption{Table de transition des codes de Beckett-Gray pour $n = 5$}
+    \begin{tabular}{c}
+        \includegraphics[width=0.5\textwidth]{transition_BGC_5.png}
+    \end{tabular}
+\end{table}
+\FloatBarrier
+
+\begin{table}[h!]
+    \centering
+    \caption{Table de transition des codes de Beckett-Gray pour $n = 6$}
+    \begin{tabular}{c}
+        \includegraphics[width=0.5\textwidth]{transition_BGC_6.png}
+    \end{tabular}
+\end{table}
+\FloatBarrier
+
+\begin{table}[h!]
+    \centering
+    \caption{Table de transition des codes de Beckett-Gray pour $n = 7$}
+    \begin{tabular}{c}
+        \includegraphics[width=0.5\textwidth]{transition_BGC_7.png}
+    \end{tabular}
+\end{table}
+\FloatBarrier
+
+Ce qui est surprenant, c'est la structure fractale qui émerge dans ces tables. Pour n=5, les transitions sont toutes
+équiprobables. Cela est remarquable car la contrainte d'être un code Beckett-Gray est forte. On rappelle qu'on a généré
+la liste exhaustive des codes de Beckett-Gray pour $n = 5$. Pour $n = 6$, la table de transition n'est pas équiprobable,
+ce qui peut s'expliquer par le fait que tous les codes possibles n'ont pas été générés. Pour $n = 7$, la situation est
+particulière : un seul code a été généré, et la table de transition reflète uniquement ce code unique. On remarque que pour
+$n = 5$ on a $5$ transitions pour un entier fixé, pour $n = 6$ on a $6$ transitions et ainsi de suite, ce qui s'explique par
+le caractère binaire des sommets, on a $n$ changements possibles d'un bi à chaque fois.

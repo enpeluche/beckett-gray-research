@@ -1,0 +1,52 @@
+
+\section{Organisation du travail}
+
+Nous avons commencé à travailler sur le TER à la fin du mois de janvier, initialement en groupe de quatre personnes.
+Notre première tâche a été de lire et de nous approprier l'article de Torsten Mütze \cite{CGC}. Ensuite, nous avons
+développé des codes en JavaScript pour générer des codes de Gray de différents types. Le choix de JavaScript s'explique
+par la possibilité de visualiser ces codes sur une page web. Par la suite, il nous a été demandé de choisir un problème
+non résolu de l'article. Nous avons opté pour celui concernant les codes de Beckett-Gray et commencé notre rapport en \LaTeX.
+Nous nous sommes documentés avec \cite{BGC_fast} et \cite{BGC}. \\
+
+Vers la sixième semaine de travail, deux membres ont quitté notre groupe, nous laissant à deux pour nous répartir les
+tâches. À ce moment-là, Lucas s'est principalement concentré sur la rédaction du rapport tandis que Mattéo s'occupait
+du codage. Une problématique de notre TER était de développer des heuristiques. Pour le codage, nous avons abandonné
+JavaScript au profit de Python, un langage que nous maîtrisons mieux. Cependant, une fois les codes fonctionnels obtenus,
+nous avons décidé de les transcrire en C\texttt{++} pour améliorer les temps d'exécution, délaissant également Python
+pour ces tâches, bien qu'il reste utilisé pour l'exploitation des résultats. \\
+
+Après cela, Lucas a principalement effectué des analyses statistiques sur les codes de Beckett-Gray pour $n=5$ et
+$n=6$ afin de voir si l'on pouvait en déduire des propriétés, tandis que Mattéo a poursuivi l'écriture du rapport.
+Voici le diagramme de Gantt associé :
+
+\resizebox{!}{200}{
+    \begin{tikzpicture}
+        \centering
+        \begin{ganttchart}[
+                vgrid, hgrid = {draw = none, draw = none},
+                canvas/.append style = {draw = none},
+                title/.style = {fill = none},
+                milestone label font = \tiny,
+                group label font = \tiny,
+                title label font = \tiny \footnotesize,
+                bar label node/.style = {text width = 4cm, align = right, font = \scriptsize\RaggedLeft, anchor = east},
+                milestone label node/.style = {text width = 3cm, align = right, font = \scriptsize\RaggedLeft, anchor = east},
+                group label node/.style = {text width = 4cm, align = right, font = \scriptsize\RaggedLeft, anchor = east},
+                progress label text = {}
+            ]{1}{16},
+
+            \gantttitle{Numéro de la semaine}{16} \\
+            \gantttitlelist{1,...,16}{1} \\
+
+            \ganttbar[bar/.append style={fill=blue!30}]{Lecture du survey de Torsten Mütze}{1}{3} \\
+            \ganttbar[bar/.append style={fill=red!30}]{Codage code de Gray réfléchis en JavaScript}{3}{5} \\
+            \ganttbar[bar/.append style={fill=green!30}]{Rapport, partie de l'article de Mütze}{5}{9} \\
+            \ganttbar[bar/.append style={fill=yellow!30}]{Lecture des articles sur le codes de Beckett Gray}{5}{7} \\
+            \ganttbar[bar/.append style={fill=purple!30}]{Code génération de code de Beckett Gray}{7}{14} \\
+            \ganttbar[bar/.append style={fill=orange!30}]{Rapport, partie Beckett Gray}{10}{14} \\
+            \ganttbar[bar/.append style={fill=pink!30}]{Exploitation des résultats du code de génération}{13}{16} \\
+
+        \end{ganttchart}
+    \end{tikzpicture}
+}
+\newpage

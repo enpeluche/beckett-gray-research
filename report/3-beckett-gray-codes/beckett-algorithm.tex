@@ -1,0 +1,45 @@
+
+\subsection{Algorithme}
+Pour écrire un algorithme qui va générer des codes de Beckett-Gray, on commence avec l'algorithme suivant écrit en
+pseudo-code que l'on va légèrement modifier par la suite.\\
+
+La fonction GC est une implémentation de génération des codes de Gray. Elle fonctionne de manière récursive en itérant
+sur chaque position possible du mot binaire pour inverser un bit dans la séquence en cours de génération. Lorsqu'une
+inversion est possible, elle est effectuée, puis la fonction est appelée de manière récursive pour générer les autres
+codes de Gray. Lorsque la longueur de la séquence atteint $2^n$, la récursion s'arrête et le code de Gray est affiché.\\
+
+Cette approche récursive permet de générer de manière exhaustive tous les codes de Gray possibles.\newline
+
+\begin{pseudo}
+    procedure GC(s, x, maxpos :integer)
+    local i
+    if s >= 2^n then
+    Print()
+    else
+    for i = 0 to Min(n-1, maxpos) do
+    x = Flip(x, i)
+    if avail[x] then
+    avail[x] = false
+    bgc[s] = x
+    GC(s + 1, x, Max(maxpos, i))
+    avail[x] = true
+    x = Flip(x, i)
+\end{pseudo}
+
+\begin{itemize}
+    \item \textbf{bgc} : un tableau global pour stocker la liste des codes Gray sur des chaînes binaires de longueur $n$.
+    \item \textbf{avail} : un tableau booléen global pour suivre quelles chaînes sont encore disponibles.
+    \item \textbf{x} : la valeur entière de la chaîne actuellement à la fin de la liste.
+    \item \textbf{s} : la longueur de la liste partielle.
+    \item \textbf{maxpos} : la position de bit la plus élevée qui a été définie à $1$ à un moment donné.
+    \item \textbf{Flip(x, i)} : une fonction qui retourne la valeur entière obtenue en inversant le $i$-ème bit dans la
+          représentation binaire de $x$.
+    \item \textbf{Print()} : une fonction qui imprime le code de Gray bgc.
+\end{itemize}
+
+Pour initialiser l'algorithme, nous fixons $avail[i] = true$ pour $i \in\{1, \cdots, n-1\}$, et $avail[0] = false$,
+fixons $bgc[0] = 0$, puis appelons $GC(1, 0, 0)$. \\
+
+L'algorithme générera tous les codes Gray sur des chaînes binaires de longueur $n$. Pour générer uniquement les codes Gray
+cycliques sur des chaînes binaires de longueur $n$, la fonction Print est appelée uniquement si la dernière chaîne dans
+la liste est une puissance de $2$ (elle diffère d'un bit de $0$).

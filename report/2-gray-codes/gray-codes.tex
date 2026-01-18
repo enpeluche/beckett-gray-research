@@ -1,0 +1,41 @@
+
+\section{Les codes de Gray.}
+
+Le codage de Gray tient son nom de l'ingénieur américain Frank Gray. Plusieurs codages similaires aux codes de Gray existent,
+avec des objectifs différents. L'un des objectifs premiers est de générer facilement et rapidement tous les objets d'un ensemble
+dans un ordre bien précis. Le concept plus généralement connu comme code de Gray combinatoire n'exige plus de coder les nombres
+mais de lister différents objets d'un ensemble, de sorte que deux objets consécutifs dans la liste diffèrent seulement d'un
+"petit" changement. Ainsi le codage de Gray est un cas particulier de codage de Gray combinatoire. En informatique, les codes de
+Gray sont utiles pour minimiser le risque d'erreur pendant la transmission d'une information par exemple, étant donné que pour
+deux valeurs consécutives, il suffit de changer la valeur d'un seul bit.\newline
+
+Ce code est par exemple utile pour des capteurs de positions absolue, par exemple sur des règles optiques. En effet, si on utilise
+le code binaire pur, pendant le passage de la position cinq $(101)_2$ à six $(110)_2$ (changement simultané de $2$ bits) il y a un
+risque de passage transitoire par quatre $(100)_2$ ou sept $(111)_2$, ce que le code Gray évite. Dans un codage de Gray cyclique,
+le passage du maximum (quinze sur $4$ bits) à zéro se fait également en ne modifiant qu'un seul bit. Ceci permet par exemple
+d'encoder un angle sur une machine automatique ou un robot.\newline
+
+\begin{definition}
+    Un code de Gray est un codage des entiers telle que lorsque on augmente l'entier d'une unité, le codage correspondant ne change
+    que d'un seul bit. Pour le codage binaire tel que l'on le connaît, cette propriété n'est pas respectée, par exemple pour passer
+    de $1$ à $2$, on change deux bits dans leurs représentation binaire, afin de passer de $001$ à $010$.
+\end{definition}
+
+\begin{definition}
+    Un code de Gray est cyclique quand son premier élément et son dernier élément diffèrent d'un seul bit.
+\end{definition}
+
+Le tableau suivant illustre ce qu'est un code de Gray, pour un codage cyclique sur $3$ bits.
+
+    {
+        \centering
+        \begin{tabular}{|c|c|c|} \hline
+            Nombre & Codage binaire & Codage de Gray \\ \hline
+            $1$    & $001$          & $000$          \\ \hline
+            $2$    & $010$          & $001$          \\ \hline
+            $3$    & $011$          & $011$          \\ \hline
+            $4$    & $100$          & $010$          \\ \hline
+            $5$    & $101$          & $110$          \\ \hline
+            $6$    & $110$          & $111$          \\ \hline
+            $7$    & $111$          & $101$          \\ \hline
+        \end{tabular} \par}

@@ -1,0 +1,44 @@
+
+
+\subsection{Nombre de bit à $1$ dans la représentation binaire des codes de Beckett-Gray}
+Voici les premier tableaux représentant le nombre de bit à $1$ dans la représentation binaire de chaque élément des premiers
+codes de Beckett-Gray générés pour $n = 5$, $n = 6$ et $n = 7$.
+
+\begin{table}[h!]
+    \centering
+    \caption{Nombre de bit à $1$ dans la représentation binaire des codes de Beckett-Gray pour $n = 5$}
+    \begin{tabular}{cc}
+        \includegraphics[width=0.5\textwidth]{BGC_5_nb_ones_line_0.png}
+        \includegraphics[width=0.5\textwidth]{BGC_5_nb_ones_line_2.png} \\
+    \end{tabular}
+\end{table}
+\FloatBarrier
+
+\begin{table}[h!]
+    \centering
+    \caption{Nombre de bit à 1 dans la représentation binaire des codes de Beckett-Gray pour $n = 6$}
+    \begin{tabular}{cc}
+        \includegraphics[width=0.5\textwidth]{BGC_6_nb_ones_line_0.png}
+        \includegraphics[width=0.5\textwidth]{BGC_6_nb_ones_line_2.png} \\
+    \end{tabular}
+\end{table}
+\FloatBarrier
+
+
+\begin{table}[h!]
+    \centering
+    \caption{Nombre de bit à $1$ dans la représentation binaire des codes de Beckett-Gray pour $n = 7$}
+    \begin{tabular}{c}
+        \includegraphics[width=0.5\textwidth]{BGC_7_nb_ones_line_0.png}
+    \end{tabular}
+\end{table}
+\FloatBarrier
+
+Pour un $n$ donné, on observe de légères fluctuations entre les motifs des codes de Beckett-Gray successifs. On remarque
+principalement des variations entre deux graphe qui ressemblent à des permutations de segments de graphe, ainsi que des
+transitions où un bit à $1$ est remplacé par un bit à $0$ et vice versa, ce qui se traduit par des sommets devenant des
+vallées et des vallées devenant des sommets. Ces fluctuations se manifestent sous forme de dents de scie sur le graphique,
+où l'axe des abscisses représente le numéro de la colonne d'un code de Beckett-Gray et l'axe des ordonnées le nombre de
+$1$ dans sa représentation binaire. On remarque que deux codes de Beckett-Gray isomorphes ont le même nombre de bit à
+$1$ dans leur représentation binaire, et donc le même graphique, on s'attend ainsi à avoir seulement $8$ graphiques vraiment
+différents pour $n=5$.

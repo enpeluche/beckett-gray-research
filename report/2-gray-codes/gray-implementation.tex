@@ -1,0 +1,74 @@
+
+
+\subsection{Implémentation}
+Dans cette sous-section, on présente différentes implémentations d'algorithmes générant des codes de Beckett-Gray.
+Les codes utilisés sont disponibles sur \href{https://github.com/Crowreed/GrayCodeCollection}{github}.
+
+\subsubsection{GC}
+\begin{python}
+    def GC(n):
+    if n==1:
+    return [0, 1]
+
+    l=[0]*(2**n)
+
+    for i in range (2**(n-1)):
+    l[i] = [0]+[GC(n-1)[i]]
+    for i in range (2**(n-1), 2**n):
+    l[i] = [1]+[list(reversed(GC(n-1)))[i-2**(n-1)]]
+
+    for i in range (2**n):
+    l[i]=flatten_list(l[i])
+    return l
+\end{python}
+
+Ce code est une implémentation de l'algorithme de génération de séquences de Gray réfléchie. \\
+
+La fonction $GC(n)$ prend un entier $n$ comme argument et génère une séquence de Gray de longueur $2^n$, sur des chaînes binaires de longueur $n$. La condition if $n==1$: renvoie $[0, 1]$, qui est la séquence de Gray pour $n=1$. Ensuite, un tableau $l$ est initialisé avec des zéros, de longueur $2^n$. Deux boucles for sont utilisées pour remplir la première moitié et la deuxième moitié du tableau $l$ avec des sous-listes correspondant à la génération récursive des séquences de Gray pour $n-1$. La fonction flatten\_list est utilisée pour aplatir les sous-listes. La séquence résultante est renvoyée. La récursivité de cet algorithme entraîne une utilisation importante de la mémoire pour de grandes valeurs de $n$. \newline
+
+\subsubsection{GCParity}
+
+\begin{python}
+    def GCParity(n):
+    l = [[0]*n]
+    for i in range(1,2**n):
+    if (i%2)==1:
+    l.append(l[-1].copy())
+    l[-1][-1]=l[-1][-1]^1
+    else:
+    for k in range(n-1,-1,-1):
+    if l[-1][k]==1:
+    l.append(l[-1].copy())
+    l[-1][k-1]=l[-1][k-1]^1
+    break
+    return l
+\end{python}
+
+C'est une autre façon de générer une séquence de Gray. Cela fonctionne en regardant la parité de l'indice de la ligne du code que l'on génère.
+Si cette ligne est impaire, il suffit juste d'inverser le dernier bit de la ligne précédente, ici réalisé avec un XOR entre ce bit et $1$.
+Si cette ligne est paire, on inverse le bit juste à gauche du bit à $1$ le plus à droite.
+
+\subsubsection{GCmod}
+
+\begin{python}
+    def GCmod(n):
+    l = [[0]*n for i in range(2**n)]
+    for i in range(2**n):
+    for j in range(n):
+    if (i+2**j+2**(j+1))%(2**(j+2)) < 2**(j+1):
+    l[i][n-j-1] = 1
+    return l
+\end{python}
+Une dernière façon de générer une séquence de Gray. On cherche à trouver où rajouter les $1$ dans la séquence en utilisant le fait que
+les bits à la position $j$ sont changés tous les $2^{j+1}$ itérations.\\
+
+\begin{table}[h!]
+    \centering
+    \caption{Représentation graphique d'un code de Gray $n=5$}
+    \vspace{0.5cm}
+    \includegraphics[scale=0.2]{exemple.png}
+\end{table}
+\FloatBarrier
+
+On peut l'observer sur cette représentation graphique un code de Gray pour $n=5$, où les bits au centre changent toutes les deux
+itération, puis ceux à côté en allant vers l'extérieur toutes les quatre itérations, puis toutes les huit itérations etc.
