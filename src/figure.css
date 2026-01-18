@@ -1,0 +1,79 @@
+/*
+Dans ce fichier css, on structure graphiquement tous ce qui est en rapport avec les figures, les sous-figures.
+
+
+Structure du code
+
+<figure>
+  <div class=".fig-container">
+
+    <table class="fig-table">
+  </div>
+  <figcaption></figcaption>
+</figure>
+
+<figure>
+  <div class=".subfig-container">
+    <figure>
+      <img class=">
+      <figcaption></figcaption>
+    </figure>
+
+
+  </div>
+  <figcaption></figcaption>
+</figure>
+*/
+
+figure{
+  margin: 1.5rem 0rem;
+  text-align: center;
+  width: 100%;
+}
+
+figure img{
+  padding: 0.5rem;
+  border: 1px solid var(--primary-border-color);
+}
+
+figcaption{
+  color: var(--secondary-text-color);
+  font-weight: 400;
+  padding-top: 1rem;
+}
+
+
+/*Pourquoi en faire deux différents déjà ?*/
+
+
+.subfig-container, .fig-container {
+  /* Ces règles s'appliquent à TOUT LE MONDE (Mobile par défaut) */
+  display: flex;
+  justify-content: center;
+  flex-direction: column; /* Empilé sur mobile */
+  
+  /* Petit conseil : ajoute un align-items pour être sûr que c'est centré horizontalement sur mobile */
+  align-items: center; 
+  
+  /* Autre conseil : ajoute un gap pour que tes figures ne se collent pas */
+  gap: 20px;
+}
+
+@media (min-width: 768px) {
+  .subfig-container, .fig-container {
+    /* Sur PC, on change JUSTE la direction. 
+       Il garde le display flex, le gap et le justify du dessus. */
+    flex-direction: row; 
+    
+    /* Optionnel : si sur PC tu veux qu'ils soient alignés en haut et pas au centre verticalement */
+    align-items: flex-start; 
+  }
+}
+
+.subfigure{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+

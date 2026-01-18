@@ -1,0 +1,62 @@
+/*
+donc la si ca depasse de 400^px de haut' ca doit' faire un overflow hidden mais sans scroll,
+*/
+
+
+#news-container{
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    /*background-color: red !important;*/
+    
+    
+    width: 100%;
+
+    
+    background-color: white;
+    border: 1px solid var(--primary-border-color);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#news-container h2{
+    margin: 1rem 0;
+}
+
+#news-container ul{
+    width: 90%;
+    /*background-color: blue !important;*/
+    max-height: 75px;
+    margin: 1rem 0;
+    padding: 0.5rem;
+    overflow: hidden;
+    overflow: scroll;
+    border: 1px solid var(--primary-border-color);
+}
+
+#news-container li{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--primary-border-color);
+}
+
+#news-container time{
+}
+
+.news-desc{}
+
+
+
+
+
+
+.flip-horizontal {
+    transform: scaleX(-1);
+    /* Indispensable pour que l'icône ne "saute" pas hors de l'écran */
+    transform-origin: center; 
+    /* L'astuce secrète pour Safari : */
+    transform-box: fill-box; 
+  }

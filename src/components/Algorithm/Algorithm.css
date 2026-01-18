@@ -1,0 +1,98 @@
+.algorithm {
+    border: 1px solid var(--primary-border-color);
+    border-radius: 2px;
+    padding: 15px;
+    margin: 1.25rem 0;
+    background-color: #f9f9f9;
+    font-family: monospace, Courier, 'Consolas', sans-serif;
+    line-height: 1.4;
+    font-size: 0.95em;
+}
+
+.algorithm h2{
+    margin-top: 0 !important;
+    margin-bottom: 0.75rem;
+    font-size: 1.2em;
+    color: var(--primary-text-color);
+}
+
+.algorithm h2::before{
+    content: "Algorithme : ";
+}
+
+.meta {
+    margin-bottom: 0.75rem;
+    padding-bottom: 5px;
+    border-bottom: 1px dashed var(--primary-border-color);
+}
+
+.keyword {
+    font-weight: bold;
+    color: var(--secondary-text-color);
+}
+
+.function {
+    font-style: italic;
+    font-weight: bold;
+}
+
+.for, .while, .if, .else{
+    position: relative;
+}
+
+.for .c,
+.while .c,
+.if .c,
+.else .c{
+    padding-left: 40px;
+}
+
+.for > .for{
+    padding-left: 40px;
+}
+
+.for::before,
+.while::before{
+    content: '';
+    position: absolute;
+
+    left: 1em;
+    top: 1.5em; /* Commence après la ligne */
+    bottom: 1.5em; /* Se termine juste avant le dernier élément de la boucle */
+
+    width: 1px; /* Ligne d'épaisseur zéro */
+    border-left: 2px solid var(--primary-border-color); /* La ligne verticale */
+}
+
+.if::before,
+.else::before{
+    content: '';
+    position: absolute;
+
+    left: 1em;
+    top: 1.5em;
+    bottom: 0.5em;
+
+    width: 1px;
+    border-left: 2px solid var(--primary-border-color);
+}
+
+.comment {
+    /* TYPOGRAPHIE ET VISUEL */
+    color: #999; /* Couleur grise claire (très courante pour les commentaires) */
+    font-style: italic; /* Met le texte en italique */
+    opacity: 0.8; /* Légère transparence pour atténuer */
+    
+    /* BOX MODEL */
+    margin-top: 0.3rem;
+    margin-bottom: 0.3rem;
+    padding-left: 20px; /* Ajoute un léger retrait pour les distinguer du code */
+}
+
+/* Optionnel : Si vous voulez que le signe de commentaire (// ou #) soit plus clair */
+.comment::before {
+    content: "// "; /* Simule un marqueur de commentaire */
+    color: #a0a0a0; /* Couleur légèrement différente */
+    font-weight: normal;
+    font-style: normal;
+}

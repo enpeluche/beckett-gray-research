@@ -1,0 +1,34 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+ul,
+ol {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: var(--primary-text-color);
+}
+
+button {
+  border: 0;
+}
+
+svg,
+svg::before,
+svg::after {
+  box-sizing: content-box;
+}
+
+.katex-display {
+  overflow: hidden;
+
+  overflow-x: scroll;
+}

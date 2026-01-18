@@ -1,0 +1,323 @@
+/*==================================================================================
+ * COMPONENTS : TABLE OF CONTENTS
+ *
+ * Author : Lucas Noirot
+
+ HACK : z-index are all made by magic
+ *================================================================================== */
+
+/*
+ * TAGS DEFINITIONS:
+ * -----------------
+ TODO  : General task to do later.
+ 
+ FIXME : Code is broken or not working, needs fixing.
+ BUG   : Known error or defect here.
+ XXX   : Warning! Very bad code, dangerous, or placeholder.
+ 
+ NOTE  : Important information or context.
+ 
+ HACK  : Ugly workaround or quick fix (not clean code).
+ 
+ LUCAS : Personal note for Lucas.
+ 
+ [ ]   : Checklist item (To do).
+ [x]   : Checklist item (Done).
+ */
+
+/* wrapper of table of contents */
+#toc-wrapper {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+
+  height: 100vh;
+  z-index: 6;
+
+  width: 32px;
+
+  background-color: var(--background-color);
+  border-right: 1px solid var(--primary-border-color);
+
+  transition: width 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* on smartphones, the closed toc will take no width*/
+@media (max-width: 768px) {
+  #toc-wrapper {
+    width: 0px;
+  }
+}
+
+/* when table of contents is open */
+#toc-wrapper.is-open {
+  width: 400px;
+  border: initial;
+}
+
+/* on smartphones, the opened toc will take full width*/
+@media (max-width: 768px) {
+  #toc-wrapper.is-open {
+    width: 100%;
+  }
+}
+
+/* a ghost container for the main parts of table of contents */
+#toc-body {
+  /* the with remain the same even if the parent retreci*/
+  min-width: 400px;
+
+  flex: 1; /* Prend toute la hauteur disponible (et'udier ca) */
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid var(--primary-border-color);
+  z-index: 8;
+
+  transition: opacity 0.2s;
+  opacity: 0;
+  pointer-events: none; /* Non cliquable quand fermé  ca aussi*/
+
+  overflow-x: hidden;
+}
+
+/* il faut aussi que le body respecte la taille de l ecran sur telephone*/
+@media (max-width: 768px) {
+  #toc-body {
+    min-width: 0;
+    width: 100%;
+  }
+}
+
+/* Quand ouvert, on affiche le corps */
+#toc-wrapper.is-open #toc-body {
+  opacity: 1;
+  pointer-events: auto;
+  transition-delay: 0.1s; /* Petit délai pour laisser ouvrir  ca aussi */
+}
+
+/* button for opening the table of contents */
+#toc-open-button {
+  position: fixed;
+
+  top: 150px;
+  left: 33px; /*to be next to the closed table of contents*/
+
+  width: 57px;
+  height: 48px;
+
+  background-color: rgba(171, 71, 188, 0.5);
+  border-radius: 0px 32px 32px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 7;
+  fill: var(--primary-text-color);
+  transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 0.1s;
+}
+
+@media (max-width: 768px) {
+  #toc-open-button {
+    left: 0px;
+  }
+}
+#toc-open-button svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* when the table of contents is opened, we don't see the opnening button anymore */
+#toc-wrapper.is-open #toc-open-button {
+  opacity: 0;
+  pointer-events: none; /* Non cliquable quand fermé */
+}
+
+/* the header when the table of contents is opened */
+#toc-wrapper header {
+  padding: 1rem;
+
+  height: 60px;
+  background-color: white; /* Important sinon on voit le texte passer dessous */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* the title of the header */
+#toc-wrapper header h5 {
+  margin: 0;
+  font-size: 1rem;
+  white-space: nowrap;
+}
+
+/* button to close the table of contents */
+#toc-close-button {
+  width: 1.25rem;
+  height: 1.25rem;
+  padding: 1rem;
+
+  border-radius: 50%;
+  background-color: var(--background-color);
+  border: 0;
+  fill: var(--primary-text-color);
+  cursor: pointer;
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+#toc-close-button svg {
+  min-width: 1.25rem;
+  min-height: 1.25rem;
+}
+#toc-close-button:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+chapter:hover {
+  background-color: rgba(171, 71, 188, 0.18);
+}
+
+/* TODO : rename 'music' to a better name */
+
+#music {
+  overflow-y: auto;
+  overflow-x: hidden;
+  flex: 1; /* Prend l'espace restant */
+  padding-bottom: 2rem;
+}
+
+.chapter {
+  background-color: rgba(171, 71, 188, 0.08);
+  margin: 1rem;
+  border-radius: 8px;
+  transition: background-color 150ms;
+}
+.chapter:hover {
+  background-color: rgba(171, 71, 188, 0.18);
+}
+
+.chapter > a {
+  display: block;
+  padding: 16px 48px;
+}
+
+.chapter h3 {
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.chapter > a > .num {
+  /* chapitre 1, appendice 1*/
+  font-weight: 500;
+  line-height: 1;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: rgb(166, 66, 182);
+}
+
+.chapter-content ul {
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+}
+
+.chapter-content li {
+  font-weight: 200;
+  padding: 0.66rem 0.5rem;
+  margin: 0;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  position: relative;
+}
+
+.chapter-content a {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  text-decoration: none;
+  color: inherit;
+  transition: color 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.chapter-content a:hover {
+  color: #7451eb;
+}
+
+.chapter-content .num {
+  z-index: 11;
+  background-color: white;
+  margin: 0;
+
+  padding: 0;
+
+  min-width: 1.5rem;
+
+  max-width: 1.5rem;
+
+  height: 1.5rem;
+
+  border: 1px solid rgb(96, 91, 104);
+
+  border-radius: 50%;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  font-size: 0.7rem;
+
+  font-weight: 400;
+
+  color: rgb(96, 91, 104);
+}
+
+.chapter-content h4 {
+  font-size: 0.9rem;
+
+  font-weight: 500;
+
+  line-height: 26px;
+
+  width: 100%;
+
+  padding-left: 16px;
+
+  display: flex;
+}
+
+/* FIXME : do not work well on smartphone
+   HACK : height: calc(100% + 32px); is computed by magic */
+.chapter-content li::after {
+  height: calc(100% + 32px);
+  border-left: 1px solid var(--primary-border-color);
+  content: " ";
+  z-index: 10;
+  position: absolute;
+  top: -16px;
+  left: 23px;
+}
+
+#toc-wrapper ul > li:last-child .chapter-content ul li:last-child::after {
+  border-left: 0;
+
+  content: none;
+}
+
+.chapter-content {
+  margin: 0rem 0.5rem;
+
+  padding: 0rem 1rem;
+}

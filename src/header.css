@@ -1,0 +1,186 @@
+header{
+  background-color: var(--background-color);
+  /* box model */
+  width: 100%;
+  height: 63px;
+
+  border-bottom: 1px solid var(--primary-border-color);
+}
+
+header nav{
+  /* box model */
+  max-width: 1200px;
+  width: 100%;
+  
+  height:100%;
+  margin:auto;
+  padding: 0 1rem;
+}
+
+@media (max-width: 1024px) {
+  header nav{
+
+    /* box model */
+    max-width: 1200px;
+    width: 100%;
+    
+    height:100%;
+    margin:auto;
+    padding: 0;
+  }
+}
+
+
+
+
+
+#main-header-hihi {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px; /* Exemple de hauteur */
+  background-color: white; /* Important sinon on voit le texte passer dessous */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  z-index: 5; /* Toujours au-dessus du reste */
+  
+  /* C'est ici que la magie de l'animation se passe */
+  transition: transform 0.3s ease-in-out;
+}
+
+
+/* La classe que le JS va ajouter quand on descend */
+.header-hidden {
+  transform: translateY(-100%); /* On le déplace de 100% de sa hauteur vers le haut */
+}
+
+
+
+
+
+header nav ul{
+
+  /* box model */
+  height: 100%;
+  
+  /* layout */
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+#main-header nav ul li{
+  height: 100%;
+  transition: transform 0.3s ease;
+}
+
+header nav ul li a{
+  
+  height: 100%;
+  /* typography */
+  font-weight: 200;
+  font-style: normal;
+
+  line-height: 1.5;
+  letter-spacing: 0px;
+}
+
+/*#main-header nav ul li:hover{
+  transform: scale(1.1);
+}*/
+
+header nav ul li a:hover{
+  color: var(--secondary-text-color);
+  fill: var(--secondary-text-color);
+}
+
+header a{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+header img{
+  height: 45px;
+}
+
+#main-header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px; /* Exemple de hauteur */
+  background-color: white; /* Important sinon on voit le texte passer dessous */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  z-index: 5; /* Toujours au-dessus du reste */
+  
+  /* C'est ici que la magie de l'animation se passe */
+  transition: transform 0.3s ease-in-out;
+}
+
+.ggg{
+  position: relative; /* Indispensable pour que l'enfant se cale par rapport à lui */
+    display: inline-block;
+}
+
+/*
+.jac{
+  display: none;
+  position: absolute; 
+  top: 100%;          
+  left: 0;             
+  
+
+  padding-left: 1rem;
+  padding-right: 0.5rem;
+  border-left: 1px solid var(--primary-border-color);
+  border-bottom: 1px solid var(--primary-border-color);
+  border-right: 1px solid var(--primary-border-color);
+}
+*/
+.jac a{
+  padding: 0.5rem;
+padding-top: 0;
+}
+
+
+.ggg:hover .jac{
+  display: flex;
+  background-color: white;
+}
+
+
+/* L'état initial (Caché) */
+.jac {
+    position: absolute;
+    top: 100%; /* Juste en dessous */
+    left: 0;
+    flex-direction: column;
+    /* On remplace display: none par ça : */
+    opacity: 0;
+    visibility: hidden;
+    
+    /* Le petit décalage vers le haut pour l'effet de descente */
+    transform: translateY(-10px);
+    
+    /* La vitesse de l'animation */
+    transition: all 0.3s ease-in-out;
+
+    /* Tes autres styles (ombre, background...) */
+    background-color: white;
+    box-shadow: 0px 10px 10px -5px rgba(0,0,0,0.2); 
+    /* ... */
+
+    padding-left: 1rem;
+    padding-right: 0.5rem;
+}
+
+/* L'état final (Au survol du parent) */
+.ggg:hover .jac {
+    /* On le rend visible */
+    opacity: 1;
+    visibility: visible;
+    
+    /* Il revient à sa place normale (descente fluide) */
+    transform: translateY(0);
+}
