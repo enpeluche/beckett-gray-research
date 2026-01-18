@@ -1,0 +1,128 @@
+[
+  {
+    "title": "Introduction",
+    "type": "chapter",
+    "isNumbered": false,
+    "path": "report/0-introduction/",
+    "children": []
+  },
+  {
+    "title": "Organisation du travail",
+    "type": "chapter",
+    "isNumbered": true,
+    "path": "report/1-work-organization/",
+    "children": []
+  },
+  {
+    "title": "Les codes de Gray",
+    "type": "chapter",
+    "isNumbered": true,
+    "path": "report/2-gray-codes/",
+    "children": [
+      {
+        "title": "Construction",
+        "path": "report/2-gray-codes/gray-construction.html"
+      },
+      {
+        "title": "Implementation",
+        "path": "report/2-gray-codes/gray-implementation.html"
+      },
+      {
+        "title": "Graphe de retournement",
+        "path": "report/2-gray-codes/gray-reversal-graph.html"
+      },
+      {
+        "title": "Etude de l’hypercube",
+        "path": "report/2-gray-codes/hypercube-study.html"
+      },
+      {
+        "title": "Cycles isomorphes dans l’hypercube vu comme un graphe de retournement",
+        "path": "report/2-gray-codes/isomorphic-cycles-reversal.html"
+      },
+      {
+        "title": "Equivalence sous reversion",
+        "path": "report/2-gray-codes/reversion-equivalence.html"
+      }
+    ]
+  },
+  {
+    "title": "Les codes de Beckett-Gray",
+    "type": "chapter",
+    "isNumbered": true,
+    "path": "report/3-beckett-gray-codes/",
+    "children": [
+      {
+        "title": "Les codes de Beckett-Gray : Introduction",
+        "path": "report/3-beckett-gray-codes/beckett-introduction.html"
+      },
+      {
+        "title": "Problematique",
+        "path": "report/3-beckett-gray-codes/beckett-problematic.html"
+      },
+      {
+        "title": "Algorithme",
+        "path": "report/3-beckett-gray-codes/beckett-algorithm.html"
+      },
+      {
+        "title": "Heuristiques",
+        "path": "report/3-beckett-gray-codes/beckett-heuristics.html"
+      },
+      {
+        "title": "Modification de l’algorithme",
+        "path": "report/3-beckett-gray-codes/algorithm-modification.html"
+      },
+      {
+        "title": "Implementation des heuristiques et du code pour changer un 1 en 0",
+        "path": "report/3-beckett-gray-codes/heuristics-and-flip-implementation.html"
+      },
+      {
+        "title": "Resultats sur la generation de codes de Beckett-Gray",
+        "path": "report/3-beckett-gray-codes/beckett-generation-results.html"
+      }
+    ]
+  },
+  {
+    "title": "Etudes statistiques sur les codes de Beckett-Gray",
+    "type": "chapter",
+    "isNumbered": true,
+    "path": "report/4-beckett-statistical-studies/",
+    "children": [
+      {
+        "title": "Nombre de bit a 1 dans la representation binaire des codes de Beckett-Gray",
+        "path": "report/4-beckett-statistical-studies/binary-one-count.html"
+      },
+      {
+        "title": "Somme des colonnes de la representation decimale des codes de Beckett-Gray",
+        "path": "report/4-beckett-statistical-studies/decimal-column-sum.html"
+      },
+      {
+        "title": "Taille des intervalles de longueur maximale de bit a 1",
+        "path": "report/4-beckett-statistical-studies/maximal-one-interval-size.html"
+      },
+      {
+        "title": "Frequence des nombres par colonne",
+        "path": "report/4-beckett-statistical-studies/column-number-frequency.html"
+      },
+      {
+        "title": "Tables de transitions",
+        "path": "report/4-beckett-statistical-studies/transition-tables.html"
+      },
+      {
+        "title": "Codes de Beckett-Gray non-isomorphes",
+        "path": "report/4-beckett-statistical-studies/non-isomorphic-beckett-codes.html"
+      },
+      {
+        "title": "Etude de l’equivalence sous reversion",
+        "path": "report/4-beckett-statistical-studies/reversion-equivalence-study.html"
+      },
+      {
+        "title": "Etudes des isomorphismes",
+        "path": "report/4-beckett-statistical-studies/isomorphism-studies.html"
+      },
+      {
+        "title": "Conclusion",
+        "path": "report/4-beckett-statistical-studies/conclusion.html"
+      }
+    ]
+  }
+]

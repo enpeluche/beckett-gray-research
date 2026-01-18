@@ -1,0 +1,94 @@
+[
+  {
+    "id": "ref-hypercube",
+    "type": "wikipedia",
+    "url": "https://fr.wikipedia.org/wiki/Hypercube",
+    "title": "XX",
+    "year": "Hypercube",
+    "authors": []
+  },
+  {
+    "id": "ref-harary-1988",
+    "type": "paper",
+    "url": "https://doi.org/10.1016/0898-1221(88)90213-1",
+    "title": "A survey of the theory of hypercube graphs",
+    "year": "1988",
+    "authors": [
+      {
+        "given": "Frank",
+        "family": "Harary"
+      },
+      {
+        "given": "John P.",
+        "family": "Hayes"
+      },
+      {
+        "given": "Horng-Jyh",
+        "family": "Wu"
+      }
+    ]
+  },
+  {
+    "id": "ref-gray-code",
+    "type": "wikipedia",
+    "url": "http://en.wikipedia.org/wiki/Gray_code",
+    "title": "Codes de Gray",
+    "year": "XX",
+    "authors": []
+  },
+  {
+    "id": "ref-cooke-2016",
+    "type": "paper",
+    "url": "",
+    "title": "Beckett-Gray Codes",
+    "year": "2016",
+    "authors": [
+      {
+        "given": "Cooke",
+        "family": "Mark"
+      },
+      {
+        "given": "North",
+        "family": "Chris"
+      },
+      {
+        "given": "Dewar",
+        "family": "Megan"
+      },
+      {
+        "given": "Stevens",
+        "family": "Brett"
+      }
+    ]
+  },
+  {
+    "id": "ref-sawada-2007",
+    "type": "paper",
+    "url": "https://doi.org/10.1016/j.endm.2007.07.091",
+    "title": "A fast algorithm to generate Beckett-Gray codes: Extended Abstract",
+    "year": "2007",
+    "authors": [
+      {
+        "given": "Joe",
+        "family": "Sawada"
+      },
+      {
+        "given": "Dennis",
+        "family": "Chi-Him Wong"
+      }
+    ]
+  },
+  {
+    "id": "ref-torsten-2023",
+    "type": "paper",
+    "url": "https://doi.org/10.48550/arXiv.2202.01280",
+    "title": "Combinatorial Gray Codes - an Updated Survey",
+    "year": "2023",
+    "authors": [
+      {
+        "given": "Torsten",
+        "family": "Mütze"
+      }
+    ]
+  }
+]
