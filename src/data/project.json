@@ -3,8 +3,8 @@
   "location_university": "Université de Montpellier",
   "date": "Janvier 2024 - Mai 2024",
 
-  "pdf": "https://raw.githubusercontent.com/Crowreed/beckett-gray-research/main/report/Rapport_TER_Lucas_Noirot_Matt%C3%A9o_Mennesson.pdf",
-  "github": "https://github.com/Crowreed/beckett-gray-research",
+  "pdf": "https://raw.githubusercontent.com/enpeluche/beckett-gray-research/main/report/Rapport_TER_Lucas_Noirot_Matt%C3%A9o_Mennesson.pdf",
+  "github": "https://github.com/enpeluche/beckett-gray-research",
   "intro_folder": "report/0-introduction/",
 
   "skills": {
@@ -21,7 +21,7 @@
     {
       "name": "Lucas Petit",
       "mail": "lucas.noirotorion@gmail.com",
-      "github": "https://github.com/Crowreed"
+      "github": "https://github.com/enpeluche"
     },
     {
       "name": "Mattéo Menesson",

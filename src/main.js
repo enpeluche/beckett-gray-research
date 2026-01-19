@@ -23,4 +23,4 @@ document.addEventListener("DOMContentLoaded", () => {
 const isProduction = window.location.hostname.includes("github.io");
 
 // Si Prod : on ajoute le nom du repo. Si Local : on reste à la racine.
-export const APP_ROOT = isProduction ? "/lattice-reduction-internship/" : "/";
+export const APP_ROOT = isProduction ? "/beckett-gray-research/" : "/";
