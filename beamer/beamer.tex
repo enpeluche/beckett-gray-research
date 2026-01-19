@@ -1,0 +1,395 @@
+\documentclass[12pt]{beamer}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usetheme{Warsaw}
+\usepackage[francais]{babel}
+\usepackage{amsthm, amsmath, amssymb}
+\usepackage{tikz-cd}
+\usepackage{pgfgantt}
+\usepackage{caption}
+\usepackage[natbib=true,style=authoryear,backend=bibtex,useprefix=true]{biblatex}
+
+\usepackage{stmaryrd}
+
+
+\addbibresource{references/bibliography.bib}
+
+\title{Exploration des Codes de Gray et des Codes de Beckett-Gray}
+\author{Lucas Noirot et Mattéo Mennesson}
+\institute{Université de Montpellier}
+\date{Année universitaire 2023-2024}
+\titlegraphic{\includegraphics[width=0.2\textwidth]{images/Gray.jpg}\hspace{2cm}\includegraphics[width=0.2\textwidth]{images/Beckett.jpg}}
+
+
+\newtheorem{proposition}{Proposition}
+\newtheorem{what}{Définition}
+\newtheorem{ex}{Exemple}
+\begin{document}
+
+
+%---------------------------------------------------------------------------------------------%
+
+\begin{frame}
+    \titlepage
+\end{frame}
+
+%---------------------------------------------------------------------------------------------%
+
+\begin{frame}
+    \frametitle{Organisation du Travail}
+    \centering
+    \resizebox{!}{200}{
+        \begin{tikzpicture}
+            \centering
+            \begin{ganttchart}[
+                    vgrid, hgrid = {draw = none, draw = none},
+                    canvas/.append style = {draw = none},
+                    title/.style = {fill = none},
+                    milestone label font = \tiny,
+                    group label font = \tiny,
+                    title label font = \tiny \footnotesize,
+                    bar label node/.style = {text width = 4cm, align = right, font = \scriptsize\RaggedLeft, anchor = east},
+                    milestone label node/.style = {text width = 3cm, align = right, font = \scriptsize\RaggedLeft, anchor = east},
+                    group label node/.style = {text width = 4cm, align = right, font = \scriptsize\RaggedLeft, anchor = east},
+                    progress label text = {}
+                ]{1}{16},
+
+                \gantttitle{Numéro de la semaine}{16} \\
+                \gantttitlelist{1,...,16}{1} \\
+
+                \ganttbar[bar/.append style={fill=blue!30}]{Lecture du survey de Torsten Mütze}{1}{3} \\
+                \ganttbar[bar/.append style={fill=red!30}]{Codage code de Gray réfléchis en JavaScript}{3}{5} \\
+                \ganttbar[bar/.append style={fill=green!30}]{Rapport, partie de l'article de Mütze}{5}{9} \\
+                \ganttbar[bar/.append style={fill=yellow!30}]{Lecture des articles sur le codes de Beckett-Gray}{5}{7} \\
+                \ganttbar[bar/.append style={fill=purple!30}]{Code génération de code de Beckett-Gray}{7}{14} \\
+                \ganttbar[bar/.append style={fill=orange!30}]{Rapport, partie Beckett-Gray}{10}{14} \\
+                \ganttbar[bar/.append style={fill=pink!30}]{Exploitation des résultats du code de génération}{13}{16} \\
+
+            \end{ganttchart}
+        \end{tikzpicture}
+    }
+
+\end{frame}
+
+%---------------------------------------------------------------------------------------------%
+
+\begin{frame}
+    \frametitle{Les codes de Gray}
+    \centering
+    000 → 001→ 011→ 010→ 110→ 111→ 101→ 100
+    \begin{table}
+        \includegraphics[width=0.1\textwidth]{images/n=3.png}
+        \caption*{Code de Gray $n=3$}
+    \end{table}
+    Minimiser le nombre de bits qui changent.
+\end{frame}
+
+%---------------------------------------------------------------------------------------------%
+
+\begin{frame}
+    \begin{what}
+        On dit que deux cycles hamiltonien $c_1=(v_1, \cdots, v_n)$ et $c_2=(w_1, \cdots, w_n)$ sont isomorphes si il existe $\sigma \in \mathcal{G}_n$ tel que :
+
+        Pour tout $i \in \{1, \cdots, n\}$, $v_i=\sigma(w_i)$ où $\sigma (w_i)$ désigne la permutation des coordonnées de $w_i$.
+    \end{what}
+
+    \begin{ex} Soit $\sigma = (12)$
+        \sigma (\textcolor{red}{1}\textcolor{green}{0}0  \rightarrow \textcolor{red}{1}\textcolor{green}{0}1 \rightarrow\textcolor{red}{1}\textcolor{green}{1}1\rightarrow \textcolor{red}{1}\textcolor{green}{1}0\rightarrow\textcolor{red}{0}\textcolor{green}{1}0\rightarrow \textcolor{red}{0}\textcolor{green}{1}1\rightarrow \textcolor{red}{0}\textcolor{green}{0}1\rightarrow \textcolor{red}{0}\textcolor{green}{0}0) =\textcolor{green}{0}\textcolor{red}{1}0  \rightarrow \textcolor{green}{0}\textcolor{red}{1}1 \rightarrow\textcolor{green}{1}\textcolor{red}{1}1\rightarrow \textcolor{green}{1}\textcolor{red}{1}0\rightarrow\textcolor{green}{1}\textcolor{red}{0}0\rightarrow \textcolor{green}{1}\textcolor{red}{0}1\rightarrow \textcolor{green}{0}\textcolor{red}{0}1\rightarrow \textcolor{green}{0}\textcolor{red}{0}0
+    \end{ex}
+\end{frame}
+
+%---------------------------------------------------------------------------------------------%
+
+\begin{frame}
+    \begin{what}
+        La réversion d'un cycle hamiltonien $c:=v_1, \cdots v_k$ est $rev(c):=v_k, \cdots, v_1$.
+    \end{what}
+    \begin{ex}
+        $rev(000 \rightarrow 001\rightarrow 011\rightarrow 010\rightarrow 110\rightarrow 111\rightarrow 101\rightarrow 100) = 100 \rightarrow101 \rightarrow111\rightarrow 110\rightarrow 010\rightarrow 011\rightarrow 001\rightarrow 000$
+    \end{ex}
+
+\end{frame}
+
+%---------------------------------------------------------------------------------------------%
+
+\begin{frame}
+    \frametitle{Graphe de retournement et hypercube}
+    \begin{table}
+        \includegraphics[width=1\textwidth]{images/hypercubes.png}
+        \caption*{Cycle hamiltonien en rouge}
+    \end{table}
+\end{frame}
+
+%---------------------------------------------------------------------------------------------%
+
+\begin{frame}
+    \frametitle{Les codes de Beckett-Gray}
+    Un bit à 1 peut passer à 0 seulement si c'est celui qui est passé à 1 il y a le plus longtemps.
+    \begin{table}
+
+        \includegraphics[width=0.06\textwidth]{images/n=5 red.png}
+        \caption*{\centering Représentation d'un code de Beckett-Gray pour n=5, où le bit à 1 depuis le plus de temps est en rouge}
+    \end{table}
+\end{frame}
+
+%---------------------------------------------------------------------------------------------%
+
+\begin{frame}
+    On remarque que les intervalles ne peuvent jamais être emboîtés. \newline
+    \begin{table}
+
+        \begin{tabular}{cc}
+            \includegraphics[width=0.1\textwidth]{images/n=4 bon.png}
+            \hspace{2cm}
+            \includegraphics[width=0.1\textwidth]{images/n=4 pas bon.png} \\
+        \end{tabular}
+        \caption*{Code de Beckett-Gray partiel pour $n=4$, correct et incorrect}
+    \end{table}
+    \begin{proposition}
+        La réversion d'un code de Beckett-Gray est un code de Beckett-Gray.
+    \end{proposition}
+
+    \begin{proposition}
+        Un isomorphisme d'un code de Beckett-Gray est un code de Beckett-Gray.
+    \end{proposition}
+\end{frame}
+
+%---------------------------------------------------------------------------------------------%
+
+\begin{frame}
+    \frametitle{Heuristiques}
+
+    \underline{Question ouverte} : est-ce qu'il existe un code de Beckett-Gray pour n=9 ?\newline
+
+    Pour $n = 5$, il faut 64 476 166 appels
+    de fonctions pour générer tous les codes de Beckett-Gray et un temps d’exécution de 2.839 secondes en moyenne.\newline
+
+    Comment réduire le temps d'exécution?\newline
+
+
+    $\Rightarrow$ Implémentation d'heuristiques pour réduire la taille de l'arbre de recherche.
+\end{frame}
+
+%---------------------------------------------------------------------------------------------%
+
+%parler ici de Gp
+\begin{frame}
+    \frametitle{Heuristique : sommets pendants}
+
+    \begin{what}Un sommet pendant est un sommet ayant un degré de $1$.
+    \end{what}
+
+    \begin{table}
+
+        \includegraphics[width=0.5\textwidth]{images/gdrggeg.png}
+        \caption*{\centering Chemin simple pour n=4}
+    \end{table}
+\end{frame}
+
+%---------------------------------------------------------------------------------------------%
+
+\begin{frame}
+    Il y a deux sommets pendant : pas possible
+    \frametitle{Heuristique : sommets pendants}
+    \begin{table}
+
+        \includegraphics[width=0.5\textwidth]{images/BG_7_exemple.png}
+        \caption*{\centering Graphe réduit avec les sommets restants}
+    \end{table}
+\end{frame}
+
+%---------------------------------------------------------------------------------------------%
+
+\begin{frame}
+    \frametitle{Heuristique : propriété eulérienne}
+    \begin{definition}
+        Un pont d'un graphe connexe est une arête dont la suppression rend le graphe non connexe.
+    \end{definition}
+
+    \begin{table}
+
+        \includegraphics[width=0.6\textwidth]{images/GHam.png}
+        \caption*{\centering Cycle hamiltonien pour un code de Beckett-Gray n=5}
+    \end{table}
+\end{frame}
+
+%---------------------------------------------------------------------------------------------%
+
+\begin{frame}
+    \frametitle{Heuristique : Nombre d’itération pour changer un 1 en 0}
+
+    \begin{table}
+        \renewcommand{\arraystretch}{1.2} % Adjust row height
+        \setlength{\tabcolsep}{2pt}
+        \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
+            \hline
+            Nombre de 1 consécutifs & 1 & 2   & 3    & 4    & 5     & 6    & 7    & 8 \\
+            \hline
+            Nombre d'occurrences    & 0 & 720 & 1320 & 4920 & 11040 & 8400 & 2400 & 0 \\
+            \hline
+        \end{tabular}
+    \end{table}
+
+    \begin{ex}
+
+        \textcolor{red}{1}00 →\textcolor{red}{1}01 →\textcolor{red}{1}\textcolor{green}{1}1→ \textcolor{red}{1}\textcolor{green}{1}0→ 0\textcolor{green}{1}0→ 0\textcolor{green}{1}1→ 001→ 000 \newline
+
+        en \textcolor{red}{rouge} 4 bit à 1 consécutifs \newline
+
+        en \textcolor{green}{vert} 4 bit 1 consécutifs
+
+    \end{ex}
+    Problème $\rightarrow$ on ne peut pas savoir à l'avance le nombre maximum de 1 consécutifs.
+\end{frame}
+
+%---------------------------------------------------------------------------------------------%
+
+\begin{frame}
+    \frametitle{Résultats sur la génération des codes de Beckett-Gray}
+
+    Génération des codes de Beckett Gray n = 5 en 14.5 secondes en Python.\newline
+
+    Génération des codes de Beckett Gray n = 5 en 0.428 secondes et  6 654 406 appels de fonction en C++, 6.6 fois plus rapide que sans heuristique.
+
+    \begin{table}
+        \includegraphics[scale=0.25]{images/NbAppel.png}
+        \caption*{Nombre d'appels de fonction pour chaque profondeur à $n=5$}
+    \end{table}
+\end{frame}
+
+%---------------------------------------------------------------------------------------------%
+
+\begin{frame}
+    \frametitle{Résultats sur la génération des codes de Beckett-Gray}
+    \begin{table}
+        \centering
+
+        \begin{tabular}{cc}
+            \includegraphics[width=0.4\textwidth]{images/BG7.png}
+            \includegraphics[width=0.4\textwidth]{images/n=8.png} \\
+        \end{tabular}
+        \caption*{Code de Beckett-Gray $n=7$ et Code de Beckett-Gray partiel pour $n=8$}
+    \end{table}
+\end{frame}
+
+%---------------------------------------------------------------------------------------------%
+
+\begin{frame}
+    \frametitle{Résultats sur la génération des codes de Beckett-Gray}
+
+    \begin{table}
+        \centering
+
+        \begin{tabular}{cc}
+            \includegraphics[width=0.5\textwidth]{images/Temps n=7.png}
+            \includegraphics[width=0.5\textwidth]{images/Temps n=8.png} \\
+        \end{tabular}
+        \caption*{Temps d'exécution pour générer un code de Beckett-Gray partiel pour $n=7$ et $n=8$}
+    \end{table}
+\end{frame}
+
+%---------------------------------------------------------------------------------------------%
+
+\begin{frame}
+    \frametitle{Études statistiques}
+
+    \underline{But} : déduire des propriétés plus globales qui nous permettraient d’améliorer les temps de génération de listes exhaustives. \newline
+
+    \begin{proposition}
+        On trouve $1920$ codes de Beckett-Gray cycliques pour n = 5, on les numérote par ordre de génération : $c_1, c_2, c_3, \cdots$
+    \end{proposition}
+
+    \begin{proposition}
+        On dénombre 8 codes de Beckett-Gray non-isomophes.
+    \end{proposition}
+
+\end{frame}
+
+%---------------------------------------------------------------------------------------------%
+
+\begin{frame}
+
+    On va travailler avec la représentation décimales des codes, par exemple :
+    $100 \rightarrow101 \rightarrow111\rightarrow 110\rightarrow 010\rightarrow 011\rightarrow 001\rightarrow 000$ devient
+    $4 \rightarrow5 \rightarrow7\rightarrow 6\rightarrow 2\rightarrow 3\rightarrow 1\rightarrow 0$
+
+    \frametitle{Tables de transition}
+
+    \begin{what}
+        Une table de transition est une matrice $n \times n$ où $n=2^k$ est le nombre de valeurs du code de Beckett-Gray sur k bits.
+
+        Chaque cellule $(i, j)$ de la matrice représente la probabilité que l’entier $i$ soit suivi par l’entier $j$ dans l'ensemble des codes de Beckett-Gray pour $k$ fixé.
+    \end{what}
+\end{frame}
+
+%---------------------------------------------------------------------------------------------%
+
+\begin{frame}
+
+    \begin{table}
+        \begin{tabular}{ccc}
+            \includegraphics[width=0.5\textwidth]{images/transition_BGC_5.png}
+            \includegraphics[width=0.5\textwidth]{images/transition_BGC_6.png}
+            \\
+        \end{tabular}
+        \caption*{Tables de transition pour $k=5$ et $k=6$}
+    \end{table}
+\end{frame}
+
+%---------------------------------------------------------------------------------------------%
+
+\begin{frame}
+    \frametitle{Indices des réversions}
+    \begin{what}
+        Soit $x, y \in \llbracket 1, 1920 \rrbracket$. Un point $(x,y)$ est bleu si le code $c_x$ est la réversion du code $c_y$.
+    \end{what}
+
+    \begin{table}
+        \includegraphics[width=0.75\textwidth]{images/woooo.png}
+        \caption*{Indices des codes de Beckett-Gray et de leur réversion pour $n=5$}
+    \end{table}
+\end{frame}
+
+%---------------------------------------------------------------------------------------------%
+
+%reafaire les graphiques pour qu'ils soient carrés et pas rectangulaire
+
+\begin{frame}
+    \frametitle{\'Etudes des indices des isomorphismes}
+
+
+    \begin{what}
+        Soit $x, y \in \llbracket 1, 960 \rrbracket$. Un point $(x,y)$ est bleu si les codes $c_x$ et $c_y$ sont isomomorphes.
+    \end{what}
+
+    \begin{table}
+        \includegraphics[width=0.65\textwidth]{images/wouah.png}
+        \caption*{Code de Beckett-Gray $n=5$ associés à leurs isomorphismes}
+    \end{table}
+\end{frame}
+
+%---------------------------------------------------------------------------------------------%
+
+\begin{frame}
+    \frametitle{Conclusion et perspectives}
+
+    $\rightarrow$ S'intéresser à d'autres problèmes ouverts \newline
+
+    $\rightarrow$ Ce qu'on a mis en oeuvre \newline
+
+    $\rightarrow$ Utiliser plus de puissance de calcul et plus de temps. \newline
+
+    $\rightarrow$ Utiliser les statistiques pour développer de nouvelles heuristiques
+\end{frame}
+
+%---------------------------------------------------------------------------------------------%
+
+\begin{frame}
+    \centering
+    Merci pour votre attention
+\end{frame}
+
+%---------------------------------------------------------------------------------------------%
+
+\end{document}
