@@ -75,15 +75,79 @@
             <h4>BGC</h4> <!--%créateur : Mattéo-->
 
             <div class="algorithm">
-                void BGC(int x) {
-                if (s >= pow(2,n) && pw2(bgc[bgc.size()-1])) {
-                listeCodeBGC.push_back(bgc);
-                return;
-                }
-                for (int i=0; i&lt;n; i++) { int xn=flip[x][i]; int bit=n-i-1; if (avail[xn] && (bi[xn][bit]==1 ||
-                bit==old[0])) { if (bi[xn][bit]==1){ old.push_back(bit); } else{ old.erase(old.begin()); }
-                avail[xn]=false; bgc.push_back(xn); s++; BGCHeuristique(xn); s--; if (bi[xn][bit]==1){
-                old.pop_back(); } else{ old.insert(old.begin(),bit); } avail[xn]=true; bgc.pop_back(); } } return; }
+                <h2>BGC</h2>
+
+                <div class="meta">
+                    <div class="in"> $x \in \mathbb{N}$ </div>
+                </div>
+
+                <div class="conditional">
+                    <div class="if">
+                        $s \geq 2^n \text{ et } \text{pw2}(\text{bgc}[-1]) :$
+                        <div class="c">
+                            listeCodeBGC.ajouter(\text{bgc}) <br>
+                            <div class="keyword">Retourner</div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+
+                <div class="for">
+                    $i$ de $0$ à $n - 1 :$
+                    <div class="c">
+                        $x_n = \text{flip}[x][i]$ <br>
+                        $\text{bit} = n - i - 1$ <br><br>
+
+                        <div class="conditional">
+                            <div class="if">
+                                $\text{avail}[x_n] \text{ et } (\text{bi}[x_n][\text{bit}] = 1 \text{ ou } \text{bit} =
+                                \text{old}[0]) :$
+                                <div class="c">
+
+                                    <div class="conditional">
+                                        <div class="if">
+                                            $\text{bi}[x_n][\text{bit}] = 1 :$
+                                            <div class="c">
+                                                old.ajouter_fin($\text{bit}$)
+                                            </div>
+                                        </div>
+                                        <div class="else">
+                                            <div class="c">
+                                                old.retirer_debut()
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+
+                                    $\text{avail}[x_n] = \text{Faux}$ <br>
+                                    bgc.ajouter_fin($x_n$) <br>
+                                    $s = s + 1$ <br>
+                                    BGCHeuristique($x_n$) <br>
+                                    $s = s - 1$ <br><br>
+
+                                    <div class="conditional">
+                                        <div class="if">
+                                            $\text{bi}[x_n][\text{bit}] = 1 :$
+                                            <div class="c">
+                                                old.retirer_fin()
+                                            </div>
+                                        </div>
+                                        <div class="else">
+                                            <div class="c">
+                                                old.ajouter_debut($\text{bit}$)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+
+                                    $\text{avail}[x_n] = \text{Vrai}$ <br>
+                                    bgc.retirer_fin()
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
 
@@ -121,17 +185,37 @@
             </div>
 
             <div class="algorithm">
-                int cmpt=0;
-                int xn=0;
-                int bit=0;
-                for (int i=0; i<n; i++) { int fxi=flip[x][i]; if (nombreVoisins[fxi]==1 && avail[fxi]){ cmpt++; if
-                    (cmpt>1){
-                    return;
-                    }
-                    xn=fxi;
-                    bit=n-i-1;
-                    }
-                    }
+                $\text{cmpt} = 0$ <br>
+                $x_n = 0$ <br>
+                $\text{bit} = 0$ <br><br>
+
+                <div class="for">
+                    $i$ de $0$ à $n - 1 :$
+                    <div class="c">
+                        $\text{fx}_i = \text{flip}[x][i]$ <br><br>
+
+                        <div class="conditional">
+                            <div class="if">
+                                $\text{nombreVoisins}[\text{fx}_i] = 1 \text{ et } \text{avail}[\text{fx}_i] :$
+                                <div class="c">
+                                    $\text{cmpt} = \text{cmpt} + 1$ <br>
+
+                                    <div class="conditional">
+                                        <div class="if">
+                                            $\text{cmpt} > 1 :$
+                                            <div class="c">
+                                                <div class="keyword">Retourner</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    $x_n = \text{fx}_i$ <br>
+                                    $\text{bit} = n - i - 1$
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="paragraph">
@@ -156,7 +240,14 @@
             </div>
 
             <div class="algorithm">
-                if (!(V[x]==0 or V[x]==n) && listeVoisinV[V[x]-1]==1 && listeVoisinV[V[x]]>0)
+                <div class="conditional">
+                    <div class="if">
+                        $\text{Non}(V[x] = 0 \text{ ou } V[x] = n) \text{ et } \text{listeVoisinV}[V[x]-1] = 1 \text{ et
+                        } \text{listeVoisinV}[V[x]] > 0 :$
+                        <div class="c">
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="paragraph">
@@ -177,20 +268,39 @@
             </div>
 
             <div class="algorithm">
+                <div class="conditional">
+                    <div class="if">
+                        $V[x] = 1 :$
+                        <div class="c">
+                            $\text{flag} = \text{Faux}$ <br><br>
 
-                if (V[x]==1){
-                bool flag=false;
-                for (int i : power2){
-                if (avail[i]){
-                flag=true;
-                break;
-                }
-                }
-                if (!flag) {.
-                return;
-                }
-                }
+                            <div class="for">
+                                $i \in \text{power2} :$
+                                <div class="c">
+                                    <div class="conditional">
+                                        <div class="if">
+                                            $\text{avail}[i] :$
+                                            <div class="c">
+                                                $\text{flag} = \text{Vrai}$ <br>
+                                                <div class="keyword">Interrompre</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
 
+                            <div class="conditional">
+                                <div class="if">
+                                    $\text{Non}(\text{flag}) :$
+                                    <div class="c">
+                                        <div class="keyword">Retourner</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
 
@@ -210,12 +320,13 @@
 
             <div class="algorithm">
                 <div class="conditional">
-
+                    <div class="if">
+                        $V[x] > 1 \text{ et } \text{nbEltEns}[V[x]-1] = 0 :$
+                        <div class="c">
+                            <div class="keyword">Retourner</div>
+                        </div>
+                    </div>
                 </div>
-                if (V[x]>1 and nbEltEns[V[x]-1]==0){
-                return;
-                }
-
             </div>
 
             <div class="paragraph">
@@ -236,9 +347,14 @@
 
 
             <div class="algorithm">
-                if (s>1 && s-oldS[0]>nbMax[n]){
-                return;
-                }
+                <div class="conditional">
+                    <div class="if">
+                        $s > 1 \text{ et } s - \text{oldS}[0] > \text{nbMax}[n] :$
+                        <div class="c">
+                            <div class="keyword">Retourner</div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="paragraph">

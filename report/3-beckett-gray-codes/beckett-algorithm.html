@@ -74,28 +74,40 @@
             </div>
 
             <div class="algorithm">
-                <h2>GC</h2>
+                <h2>GC (Backtracking)</h2>
 
                 <div class="meta">
-                    <div class="in">
-                        procedure (s, x, maxpos :integer)
-                    </div>
-                    local i
-                    <div class="conditional">
-                        <div class="if">
-                            if s >= 2^n then
-                            Print()
+                    <div class="in"> $s, x, \text{maxpos} \in \mathbb{N}$ </div>
+                </div>
+
+                <div class="conditional">
+                    <div class="if">
+                        $s \geq 2^n :$
+                        <div class="c">
+                            <code>Print()</code>
                         </div>
-                        <div class="else">
+                    </div>
+                    <div class="else">
+                        <div class="c">
                             <div class="for">
-                                for i = 0 to Min(n-1, maxpos) do
-                                x = Flip(x, i)
-                                if avail[x] then
-                                avail[x] = false
-                                bgc[s] = x
-                                GC(s + 1, x, Max(maxpos, i))
-                                avail[x] = true
-                                x = Flip(x, i)
+                                $i$ de $0$ à $\min(n-1, \text{maxpos}) :$
+                                <div class="c">
+                                    $x = \text{Flip}(x, i)$ <br><br>
+
+                                    <div class="conditional">
+                                        <div class="if">
+                                            avail[$x$] :
+                                            <div class="c">
+                                                avail[$x$] = Faux <br>
+                                                bgc[$s$] = $x$ <br>
+                                                GC($s + 1, x, \max(\text{maxpos}, i)$) <br>
+                                                avail[$x$] = Vrai
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    $x = \text{Flip}(x, i)$
+                                </div>
                             </div>
                         </div>
                     </div>

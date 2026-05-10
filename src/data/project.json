@@ -8,8 +8,15 @@
   "intro_folder": "report/0-introduction/",
 
   "skills": {
-    "tech": ["LaTeX", "Python", "C++"],
-    "concepts": ["Théorie des graphes", "Heuristique"]
+    "tech": ["LaTeX", "Python", "C++ (-O3, bitwise)"],
+    "concepts": [
+      "Théorie des graphes",
+      "Heuristique",
+      "Backtracking",
+      "Hypercube",
+      "Optimisation bas niveau",
+      "Recherche scientifique"
+    ]
   },
 
   "supervisor": {

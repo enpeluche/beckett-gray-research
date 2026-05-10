@@ -15,11 +15,11 @@ Liste des selecteurs
 .theorem
 */
 
-#article{
-    max-width: 900px;
-    width: 100%;
-    margin: 0rem auto;
-    padding: 1rem;
+#article {
+  max-width: 900px;
+  width: 100%;
+  margin: 0rem auto;
+  padding: 1rem;
 }
 
 /*--------------------------------------*/
@@ -36,10 +36,9 @@ Liste des selecteurs
 .problem > ul,
 .proof > ul,
 .proposition > ul,
-.remark
-.theorem > ul{
+.remark .theorem > ul {
   margin: 1rem 0;
-  list-style-type:disc;
+  list-style-type: disc;
 }
 
 .conjecture ul,
@@ -52,8 +51,7 @@ Liste des selecteurs
 .problem ul,
 .proof ul,
 .proposition ul,
-.remark
-.theorem ul{
+.remark .theorem ul {
   padding-left: 2.5rem;
 }
 
@@ -67,9 +65,8 @@ Liste des selecteurs
 .problem ol,
 .proof ol,
 .proposition ol,
-.remark
-.theorem ol{
-  list-style-type:decimal;
+.remark .theorem ol {
+  list-style-type: decimal;
   padding-left: 2.5rem;
 }
 
@@ -83,8 +80,7 @@ Liste des selecteurs
 .problem ul ul,
 .proof ul ul,
 .proposition ul ul,
-.remark
-.theorem ul ul{
+.remark .theorem ul ul {
   list-style-type: square;
   margin-bottom: 0.6rem;
 }
@@ -99,8 +95,7 @@ Liste des selecteurs
 .problem ul ol,
 .proof ul ol,
 .proposition ul ol,
-.remark
-.theorem ul ol{
+.remark .theorem ul ol {
   margin-bottom: 0.6rem;
 }
 
@@ -109,13 +104,12 @@ Liste des selecteurs
 .definition > ul > li,
 .example > ul > li,
 .lemma > ul > li,
-.notation > ul >li,
+.notation > ul > li,
 .paragraph > ul > li,
 .problem > ul > li,
 .proof > ul > li,
 .proposition > ul > li,
-.remark
-.theorem > ul > li{
+.remark .theorem > ul > li {
   margin-bottom: 0.3rem 0;
 }
 
@@ -129,8 +123,7 @@ Liste des selecteurs
 .problem li,
 .proof li,
 .proposition li,
-.remark
-.theorem li{
+.remark .theorem li {
   padding: 0.3rem 0;
 }
 
@@ -138,51 +131,51 @@ Liste des selecteurs
 /*                                      */
 /* -------- gestion des label --------- */
 
-.conjecture > .label::before{
+.conjecture > .label::before {
   content: "Conjecture.";
 }
 
-.counterexample > .label::before{
+.counterexample > .label::before {
   content: "Contre-exemple.";
 }
 
-.definition > .label::before{
+.definition > .label::before {
   content: "Définition.";
 }
 
-.example > .label::before{
+.example > .label::before {
   content: "Exemple.";
 }
 
-.lemma > .label::before{
+.lemma > .label::before {
   content: "Lemme.";
 }
 
-.notation > .label::before{
+.notation > .label::before {
   content: "Notation.";
 }
 
-.paragraph > .label::before{
+.paragraph > .label::before {
   content: "";
 }
 
-.problem > .label::before{
+.problem > .label::before {
   content: "Problème.";
 }
 
-.proof > .label::before{
+.proof > .label::before {
   content: "Preuve.";
 }
 
-.proposition > .label::before{
+.proposition > .label::before {
   content: "Proposition.";
 }
 
-.remark > .label::before{
+.remark > .label::before {
   content: "Remarque.";
 }
 
-.theorem > .label::before{
+.theorem > .label::before {
   content: "Théorème:";
 }
 
@@ -199,7 +192,7 @@ Liste des selecteurs
 .proof a,
 .proposition a,
 .remark a,
-.theorem a{
+.theorem a {
   color: var(--secondary-text-color);
   display: inline;
   text-decoration: underline;
@@ -216,25 +209,20 @@ Liste des selecteurs
 .proof a:hover,
 .proposition a:hover,
 .remark a:hover,
-.theorem a:hover{
+.theorem a:hover {
   text-decoration: none;
 }
 
 /*-------------------------*/
 
-#article > h2, 
-#article > h3{
+#article > h2,
+#article > h3 {
   margin: 4rem 0rem;
 }
 
-
-
-
-
-
-
-
-
+.underline {
+  text-decoration: underline;
+}
 
 .remark,
 .example,
@@ -248,15 +236,15 @@ Liste des selecteurs
 .notation,
 .proof,
 details,
-table{
+table {
   margin: 1.5rem 0rem;
 }
 
-.paragraph{
+.paragraph {
   margin: 0.75rem 0rem;
 }
 
-strong{
+strong {
   font-weight: 700;
   font-style: normal;
   line-height: 26px;
@@ -285,17 +273,15 @@ h1{
 
 
 */
-hr{
+hr {
   margin: 2rem 0rem;
 }
 
-a:hover{
+a:hover {
   text-decoration: none;
 }
 
-
-
-.end-proof{
+.end-proof {
   display: flex;
   flex-direction: row;
   align-items: flex-end;
@@ -304,85 +290,75 @@ a:hover{
   margin-right: 1.25rem;
 }
 
-.theorem{
-    
-    border-left: 1px solid var(--primary-border-color);
-    border-bottom: 1px solid var(--primary-border-color);
+.theorem {
+  border-left: 1px solid var(--primary-border-color);
+  border-bottom: 1px solid var(--primary-border-color);
 }
 
-
-
-
-
-.theorem > .title{
-    font-weight: 700;
-    font-style: normal;
-    color: var(--secondary-text-color)
+.theorem > .title {
+  font-weight: 700;
+  font-style: normal;
+  color: var(--secondary-text-color);
 }
 
-.definition > .title{
+.definition > .title {
   font-weight: 500;
   font-style: normal;
-  color: var(--secondary-text-color)
+  color: var(--secondary-text-color);
 }
 
-.theorem{
-    padding: 0.5rem;    
+.theorem {
+  padding: 0.5rem;
 }
 
 .theorem > p,
-.definition > p{
-    padding-top: 0.5rem;
+.definition > p {
+  padding-top: 0.5rem;
 }
 
 .theorem > ul,
-.definition > ul{
-    padding-top: 0.5rem;
+.definition > ul {
+  padding-top: 0.5rem;
 }
 
-
-
-
-
-.example, 
+.example,
 .counterexample,
 .notation,
-.proof{
-
+.proof {
   font-weight: 200;
   font-style: italic;
   line-height: 26px;
   letter-spacing: 0px;
 }
 
-.definition, 
-.remark, 
-.theorem, 
-.proposition, 
-.problem, 
+.definition,
+.remark,
+.theorem,
+.proposition,
+.problem,
 .lemma,
-.paragraph{
+.paragraph {
   font-weight: 200;
   font-style: normal;
   line-height: 26px;
   letter-spacing: 0px;
 }
 
-.problem{
+.problem {
   border-left: var(--secondary-text-color) 2px solid;
   padding-left: 12px;
 }
 
-.proof{
+.proof {
   border-left: 2px solid var(--primary-border-color);
   padding-left: 11px;
 }
 
-.proof > .paragraph{
+.proof > .paragraph {
   padding-left: 12px;
 }
 
-.label{
+.label {
   font-weight: 700;
   font-style: italic;
   line-height: 26px;
@@ -390,29 +366,22 @@ a:hover{
   padding-right: 3px;
 }
 
-
 @media (max-width: 1024px) {
- .paragraph{
-  text-align: justify;
- }
+  .paragraph {
+    text-align: justify;
+  }
 }
 
-
-
-
-
-#article > h2{
-    font-weight: 700;
-    font-size: 2rem;
-    font-style: normal;
-    line-height: 1.5;
-    letter-spacing: 0px;
-    color: var(--secondary-text-color);
-
+#article > h2 {
+  font-weight: 700;
+  font-size: 2rem;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: 0px;
+  color: var(--secondary-text-color);
 }
 
-#article > h3{
-
+#article > h3 {
   font-weight: 600;
   font-size: 1.7rem;
   font-style: normal;
@@ -420,10 +389,10 @@ a:hover{
   letter-spacing: 0px;
 }
 
-#article{
+#article {
   counter-reset: subsubchapter;
 }
-#article > h4{
+#article > h4 {
   counter-increment: subsubchapter;
   font-weight: 550;
   font-size: 1.2rem;
@@ -432,10 +401,10 @@ a:hover{
   letter-spacing: 0px;
 }
 
-#article > h4::before{
+#article > h4::before {
   content: counter(subsubchapter) ". ";
 }
 
-#article img{
+#article img {
   max-width: 100%;
 }
